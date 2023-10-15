@@ -1,94 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>University Student Housing</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-
-        header {
-            background-color: #0072b5;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        nav {
-            background-color: #333;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-        }
-    </style>
+    <title>Housing Page</title>
 </head>
 <body>
-    <header>
-        <h1>University Student Housing</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Housing Options</a></li>
-            <li><a href="#">Apply</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h2>Welcome to University Student Housing</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan urna ut leo eleifend, et gravida eros convallis. Sed in ultricies urna.
-        </p>
-        <h3>Housing Options</h3>
-        <ul>
-            <li>On-Campus Dormitories</li>
-            <li>Off-Campus Apartments</li>
-            <li>Shared Housing</li>
-        </ul>
-        <h3>Apply for Housing</h3>
-        <p>
-            To apply for student housing, please fill out the application form <a href="#">here</a>.
-        </p>
-    </div>
-    <footer>
-        &copy; 2023 University Student Housing
-    </footer>
+    <h1>Welcome to our Housing Page</h1>
+    <h2>A. Furniture</h2>
+    <label for="furniture-options">Options of Furniture:</label>
+    <select id="furniture-options" name="furniture-options">
+        <option value="free">Free</option>
+        <option value="not-free">Not Free</option>
+    </select>
+
+    <br>
+
+    <label for="furniture-sources">Sources of Furniture:</label>
+    <select id="furniture-sources" name="furniture-sources">
+        <option value="non-profit">Non Profit</option>
+        <option value="online-shops">Online Shops</option>
+        <option value="physical-stores">Physical Stores</option>
+    </select>
+
+    <h2>B. Finding Accommodation</h2>
+    <label for="location">Location:</label>
+    <select id="location" name="location">
+        <option value="city-center">City Center</option>
+        <option value="suburbs">Suburbs</option>
+        <option value="rural">Rural</option>
+    </select>
+
+    <br>
+
+    <label for="rental-limit">Rental Limit:</label>
+    <input type="number" id="rental-limit" name="rental-limit" placeholder="Enter your rental limit">
+
+    <h2>C. Transportation Options</h2>
+    <label for="transportation-type">Types of Transportation:</label>
+    <select id="transportation-type" name="transportation-type">
+        <option value="bus">Bus</option>
+        <option value="personal-car">Personal Car</option>
+        <option value="cycle">Cycle</option>
+    </select>
+
+    <br>
+
+    <label for="transportation-routes">Routes:</label>
+    <select id="transportation-routes" name="transportation-routes">
+        <option value="route-1">Route 1</option>
+        <option value="route-2">Route 2</option>
+        <option value="route-3">Route 3</option>
+    </select>
 </body>
 </html>

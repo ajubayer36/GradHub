@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Housing Page</title>
+    <title>International Student Housing</title>
 </head>
 <body>
-    <h1>Welcome to our Housing Page</h1>
+    <h1>Welcome to International Student Housing</h1>
+    
     <h2>A. Furniture</h2>
     <label for="furniture-options">Options of Furniture:</label>
     <select id="furniture-options" name="furniture-options">
@@ -24,9 +25,8 @@
     <h2>B. Finding Accommodation</h2>
     <label for="location">Location:</label>
     <select id="location" name="location">
-        <option value="city-center">City Center</option>
-        <option value="suburbs">Suburbs</option>
-        <option value="rural">Rural</option>
+        <option value="on-campus">On-Campus</option>
+        <option value="off-campus">Off-Campus</option>
     </select>
 
     <br>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Arkansas: Outdoor Adventures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background-color: #3498db;
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .tile-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 100px;
+            padding: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .tile {
+            width: 100%;
+            height: 500%;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tile a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+        }
+
+        /* Replace these with your image URLs */
+        #birding {
+            background-image: url('https://outdoornebraska.gov/wp-content/uploads/2023/03/EF20200310_0723-rgb.jpg');
+        }
+
+        #botanical {
+            background-image: url('https://www.fayetteville-ar.gov/ImageRepository/Document?documentID=998');
+        }
+
+        #camping {
+            background-image: url('https://www.nps.gov/grte/planyourvisit/images/JLCG_tents_Teewinot_2008_mattson_1.JPG');
+        }
+
+        #lakes {
+            background-image: url('https://arkansasoutside.com/wp-content/uploads/2022/07/Beaver-Lake.jpg');
+        }
+
+        #springs {
+            background-image: url('https://img-aws.ehowcdn.com/700x/www.onlyinyourstate.com/wp-content/uploads/2022/06/creek.jpg;
+        }
+
+        #parks {
+            background-image: url('https://media.istockphoto.com/id/490879812/photo/hot-springs-national-park.jpg?s=612x612&w=0&k=20&c=Uxj2Le6uYei4_sTItRe10BlKfUmJ3vdr6ywHMVqhY9w=');
+        }
+
+        #scenic {
+            background-image: url('https://www.arkansas.com/sites/default/files/styles/article_x_large/public/2022-06/00_Lead%20Image_20220513_092501_Arkansas_COPYRIGHT_HoneyTrek.jpg?itok=_FzVO28b');
+        }
+
+        #hunting {
+            background-image: url('https://irp-cdn.multiscreensite.com/f6860eb8/dms3rep/multi/CM+The+Huntin+Grounds+photo+1.JPG');
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#birding">BIRDING & WATCHABLE WILDLIFE</a>
+        <a href="#botanical">BOTANICAL GARDENS & ARBORETUMS</a>
+        <a href="#camping">CAMPING & RVS</a>
+        <a href="#lakes">LAKES, BEACHES AND SWIMMING HOLES</a>
+        <a href="#springs">NATURAL SPRINGS</a>
+        <a href="#parks">PARKS</a>
+        <a href="#scenic">SCENIC SPOTS</a>
+        <a href="#hunting">HUNTING & FISHING</a>
+    </nav>
+
+    <div class="tile-container">
+        <div class="tile" id="birding">
+            <a href="#">BIRDING & WATCHABLE WILDLIFE</a>
+        </div>
+
+        <div class="tile" id="botanical">
+            <a href="#">BOTANICAL GARDENS & ARBORETUMS</a>
+        </div>
+
+        <div class="tile" id="camping">
+            <a href="#">CAMPING & RVS</a>
+        </div>
+
+        <div class="tile" id="lakes">
+            <a href="#">LAKES, BEACHES AND SWIMMING HOLES</a>
+        </div>
+
+        <div class="tile" id="springs">
+            <a href="#">NATURAL SPRINGS</a>
+        </div>
+
+        <div class="tile" id="parks">
+            <a href="#">PARKS</a>
+        </div>
+
+        <div class="tile" id="scenic">
+            <a href="#">SCENIC SPOTS</a>
+        </div>
+
+        <div class="tile" id="hunting">
+            <a href="#">HUNTING & FISHING</a>
+        </div>
+    </div>
+</body>

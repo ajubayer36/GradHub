@@ -12,48 +12,68 @@
             padding: 0;
         }
         header {
-            background-color: #3498db;
+            background-image: url('logo1.jpg');
+            background-size: 100%; /* Fit the image entirely within the header */
+            background-position: center;
             color: #fff;
             text-align: center;
-            padding: 20px 0;
+            padding: 165px 0; /* Increase padding for more space in the header */
         }
         h1 {
             font-size: 36px;
         }
-        .section {
-            padding: 40px;
+        .description-box {
+            background-color: red; /* Set the background color to red */
+            color: #fff;
+            padding: 20px;
+            font-size: 24px; /* Increase font size */
+            font-style: italic; /* Make the font italic */
+			text-align: center;
+        }
+        .sections-container {
             text-align: center;
+            margin-top: 20px; /* Add margin at the top of sections-container */
+        }
+        .section {
+            background-color: yellow; /* Set the background color to yellow */
+            display: inline-block;
+            width: 30%; /* Set equal width for all sections */
+            height: 300px; /* Set equal height for all sections */
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            margin: 0 10px 20px 10px; /* Add margin for spacing between sections */
+            vertical-align: top;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>GradHub</h1>
+        <h1></h1>
     </header>
-    <section class="section" style="background-color: #fff;">
-        <h2><a href="FoodAndCulture.html">Food and Culture</a></h2>
-        <p>Explore the diverse world of food and culture at GradHub.</p>
-        <!-- Add your content related to Food and Culture here -->
-    </section>
-    <section class="section" style="background-color: #f0f0f0;">
-        <h2><a href="LegalDoc.html">Legal Documents</a></h2>
-        <p>Access important legal documents and resources at GradHub.</p>
-        <!-- Add your legal documents and resources here -->
-    </section>
-    <section class="section" style="background-color: #fff;">
-        <h2><a href="Housing.html">Housing</a></h2>
-        <p>Find information and resources related to housing and accommodation.</p>
-        <!-- Add content related to Housing here -->
-    </section>
-    <section class="section" style="background-color: #f0f0f0;">
-        <h2><a href="finance-and-budget.html">Finance and Budget</a></h2>
-        <p>Access financial planning and budgeting tools and information.</p>
-        <!-- Add content related to Finance and Budget here -->
-    </section>
-    <section class="section" style="background-color: #fff;">
-        <h2><a href="Recreation.html">Recreation</a></h2>
-        <p>Discover recreational activities and leisure options at GradHub.</p>
-        <!-- Add content related to Recreation here -->
-    </section>
+    <div class="description-box">
+        <p>Welcome to GradHub! You will find all things you need to know!</p>
+    </div>
+    <div class="sections-container">
+        <section class="section">
+            <h2><a href="FoodAndCulture.html">Food and Culture</a></h2>
+            <p>Explore the diverse world of food and culture at GradHub.</p>
+        </section>
+        <section class="section">
+            <h2><a href="LegalDoc.html">Legal Documents</a></h2>
+            <p>Access important legal documents and resources at GradHub.</p>
+        </section>
+        <section class="section">
+            <h2><a href="Housing.html">Housing</a></h2>
+            <p>Find information and resources related to housing and accommodation.</p>
+        </section>
+        <section class="section">
+            <h2><a href="finance-and-budget.html">Finance and Budget</a></h2>
+            <p>Access financial planning and budgeting tools and information.</p>
+        </section>
+        <section class="section">
+            <h2><a href="Recreation.html">Recreation</a></h2>
+            <p>Discover recreational activities and leisure options at GradHub.</p>
+        </section>
+    </div>
 </body>
 </html>

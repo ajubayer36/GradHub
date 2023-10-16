@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.cdnfonts.com/css/cascadia-code" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cascadia Cove', sans-serif;
+            background-color: #282C34; /* One Dark background color */
+            color: #ABB2BF; /* One Dark text color */
+        }
+
+        header {
+            background-color: #333842; /* One Dark header background color */
+            color: #ABB2BF; /* One Dark header text color */
+            text-align: center;
+            padding: .1px;
+            font-size: 15px;
+        }
+
+        nav {
+            background-color: #21252B; /* One Dark navigation background color */
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #61AFEF; /* One Dark link color */
+            text-decoration: none;
+            margin: 0 15px;
+            padding-bottom: 3px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        nav a.active {
+            padding: 3px 15px;
+            background-color: rgb(165, 147, 147); /* One Dark active link background color */
+            color: black; /* One Dark active link text color */
+        }
+
+        main {
+            /*background: linear-gradient(135deg, #22262C 30%, #1A1D23 50%, #22262C 70%); /* Gradient background */
+            padding: 7px;
+        }
+
+        section {
+            color: #ABB2BF;
+            padding: 1px;
+            text-align: center;
+            min-height: 500px;
+            display: none;
+            animation: fade-in 1s forwards;
+        }
+
+        section:nth-child(odd) {
+            /*background-color: #2C323D; /* One Dark section background color */
+            background: linear-gradient(135deg, #22262C 30%, #1A1D23 50%, #22262C 70%);
+        }
+
+        section:nth-child(even) {
+            /*background-color: #3E4451; /* One Dark section background color */
+            background: linear-gradient(135deg, #22262C 30%, #1A1D23 50%, #22262C 70%);
+        }
+
+        .visible {
+            display: block;
+        }
+
+        #credit-cards {
+            overflow: hidden; /* Clear the float */
+        }
+
+        .content {
+            overflow: hidden; /* Clear the float */
+        }
+
+        .image {
+            flex: 1;
+            padding: 5px;
+            text-align: right;
+            border: 2px dotted #61AFEF; /* Border frame color */
+            max-width: 450px; /* Maximum image width */
+            float: right;
+        }
+        
+        .image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Finance & Budgeting</h1>
+    </header>
+    <nav>
+        <a href="#credit-cards">Credit Card Options</a>
+        <a href="#student-discounts">Student Discount Options</a>
+        <a href="#scholarships">Scholarships & Grants</a>
+        <a href="#insurance">Insurance for International Students</a>
+        <a href="#living-expenses">Monthly Living Expenses</a>
+        <a href="#utility-expenses">Utility Expenses</a>
+        <a href="#bank-account">Opening a Bank Account</a>
+    </nav>
+    <main>
+        <section id="credit-cards" class="visible">
+            <h2>Credit Card Options</h2>
+            <p>Information about credit card options for students.</p>
+            <div class="content">
+                <div class="image">
+                    <img src="credit-card-options.jpg" alt="Credit Card Image">
+                </div>
+            </div>
+        </section>
+        <section id="student-discounts">
+            <h2>Student Discount Options</h2>
+            <p>Explore discounts available for students.</p>
+        </section>
+        <section id="scholarships">
+            <h2>Scholarships & Grants</h2>
+            <p>Learn about scholarships and grants opportunities.</p>
+        </section>
+        <section id="insurance">
+            <h2>Insurance for International Students</h2>
+            <p>Understanding insurance options for international students.</p>
+        </section>
+        <section id="living-expenses">
+            <h2>Monthly Living Expenses</h2>
+            <p>Managing your monthly living expenses.</p>
+        </section>
+        <section id="utility-expenses">
+            <h2>Utility Expenses</h2>
+            <p>Information about utility expenses and how to manage them.</p>
+        </section>
+        <section id="bank-account">
+            <h2>Opening a Bank Account</h2>
+            <p>Guidance on opening a bank account for international students.</p>
+        </section>
+    </main>
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        navLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                sections.forEach((section) => {
+                    section.classList.remove('visible');
+                });
+
+                sections[index].classList.add('visible');
+
+                navLinks.forEach((navLink) => {
+                    navLink.classList.remove('active');
+                });
+
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

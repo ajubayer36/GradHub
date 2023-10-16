@@ -3,126 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cool Page</title>
+    <title>GradHub</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
         }
-
         header {
             background-color: #3498db;
             color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 20px 0;
         }
-
-        nav {
-            background-color: #2c3e50;
+        h1 {
+            font-size: 36px;
+        }
+        .section {
+            padding: 40px;
             text-align: center;
-            padding: 10px 0;
         }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #3498db;
-        }
-
-        main {
-            background-color: #ecf0f1;
-            padding: 20px;
-        }
-
-        section {
-            background-color: #1abc9c;
-            color: #fff;
-            padding: 100px;
-            text-align: center;
-            min-height: 500px;
-            transition: background-color 0.5s;
-        }
-
-        section:nth-child(even) {
-            background-color: #e74c3c;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .visible {
-            display: block;
-        }
-
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Cool Page</h1>
+        <h1>GradHub</h1>
     </header>
-    <nav>
-        <a href="#section1">Section 1</a>
-        <a href="#section2">Section 2</a>
-        <a href="#section3">Section 3</a>
-        <a href="#section4">Section 4</a>
-        <a href="#section5">Section 5</a>
-        <a href="#section6">Section 6</a>
-        <a href="#section7">Section 7</a>
-    </nav>
-    <main>
-        <section id="section1" class="visible">
-            <h2>Section 1</h2>
-            <p>This is the first section of the cool page.</p>
-        </section>
-        <section id="section2" class="hidden">
-            <h2>Section 2</h2>
-            <p>This is the second section of the cool page.</p>
-        </section>
-        <section id="section3" class="hidden">
-            <h2>Section 3</h2>
-            <p>This is the third section of the cool page.</p>
-        </section>
-        <section id="section4" class="hidden">
-            <h2>Section 4</h2>
-            <p>This is the fourth section of the cool page.</p>
-        </section>
-        <section id="section5" class="hidden">
-            <h2>Section 5</h2>
-            <p>This is the fifth section of the cool page.</p>
-        </section>
-        <section id="section6" class="hidden">
-            <h2>Section 6</h2>
-            <p>This is the sixth section of the cool page.</p>
-        </section>
-        <section id="section7" class="hidden">
-            <h2>Section 7</h2>
-            <p>This is the seventh section of the cool page.</p>
-        </section>
-    </main>
-    <script>
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
-
-        navLinks.forEach((link, index) => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                sections.forEach((section) => {
-                    section.classList.remove('visible');
-                    section.classList.add('hidden');
-                });
-
-                sections[index].classList.remove('hidden');
-                sections[index].classList.add('visible');
-            });
-        });
-    </script>
+    <section class="section" style="background-color: #fff;">
+        <h2><a href="FoodAndCulture.html">Food and Culture</a></h2>
+        <p>Explore the diverse world of food and culture at GradHub.</p>
+        <!-- Add your content related to Food and Culture here -->
+    </section>
+    <section class="section" style="background-color: #f0f0f0;">
+        <h2><a href="LegalDoc.html">Legal Documents</a></h2>
+        <p>Access important legal documents and resources at GradHub.</p>
+        <!-- Add your legal documents and resources here -->
+    </section>
+    <section class="section" style="background-color: #fff;">
+        <h2><a href="Housing.html">Housing</a></h2>
+        <p>Find information and resources related to housing and accommodation.</p>
+        <!-- Add content related to Housing here -->
+    </section>
+    <section class="section" style="background-color: #f0f0f0;">
+        <h2><a href="finance-and-budget.html">Finance and Budget</a></h2>
+        <p>Access financial planning and budgeting tools and information.</p>
+        <!-- Add content related to Finance and Budget here -->
+    </section>
+    <section class="section" style="background-color: #fff;">
+        <h2><a href="Recreation.html">Recreation</a></h2>
+        <p>Discover recreational activities and leisure options at GradHub.</p>
+        <!-- Add content related to Recreation here -->
+    </section>
 </body>
 </html>

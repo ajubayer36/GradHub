@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Recreation</title>
+    <title>Outdoor Places</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,17 +14,17 @@
             color: #fff;
             padding: 20px;
         }
-        .subsections {
+        .tile-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             padding: 20px;
         }
-        .subsection {
-            width: 200px;
-            height: 200px;
+        .tile {
+            width: 400px;
+            height: 400px;
             margin: 10px;
-            background-color: red;
+            background-color: #4CAF50; /* Green color for scenic spots */
             color: #fff;
             text-align: center;
             line-height: 1.5;
@@ -32,28 +32,24 @@
             font-size: 20px;
             padding: 10px;
             overflow: hidden;
+            cursor: pointer; /* Add a pointer cursor to indicate interactivity */
         }
-        .subsection a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: inherit;
+        .tile.water {
+            background-color: #2196F3; /* Blue color for water spots */
+        }
+        .tile.hiking {
+            background-color: #FF9800; /* Orange color for hiking */
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Recreation</h1>
+        <h1>Outdoor Places</h1>
     </div>
-    <div class="subsections">
-        <div class="subsection">
-            <a href="outdoor-places.html">Outdoor Places</a>
-        </div>
-        <div class="subsection">Movie Theatres and Shows</div>
-        <div class="subsection">Outdoor Activities</div>
-        <div class="subsection">Indoor Places</div>
-        <div class="subsection">Concerts, Carnivals and Fairs</div>
+    <div class="tile-container">
+        <div class="tile">Scenic Spots</div>
+        <div class="tile water">Water Spots</div>
+        <div class="tile hiking">Hiking</div>
     </div>
 </body>
 </html>

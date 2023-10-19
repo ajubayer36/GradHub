@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scenic Spots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        .postcard-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .postcard {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+            margin-bottom: 20px; /* Add margin to create space between cards */
+            display: flex;
+            flex-direction: column;
+        }
+        .postcard img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .postcard-info {
+            padding: 10px;
+            flex: 1; /* Allow description to expand to fill remaining space */
+        }
+        .spot-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 10px; /* Add margin to separate name and description */
+        }
+        .description {
+            margin-top: 10px;
+        }
+        .see-location {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Scenic Spots</h1>
+    </div>
+    <div class="postcard-container">
+        <div class="postcard">
+            <img src="scenic1.jpg" alt="Scenic Spot 1">
+            <div class="postcard-info">
+                <div class="spot-name">Whitaker Point</div>
+                <div class="description">
+                    Tucked in the Ozark National Forest, Whitaker Point is a short 1.5 mile hike that leads to an incredibly rewarding view! The overlook offers a scenic view of lush mountains, and tops the list as one of the most beautiful places in Arkansas. I recommend either visiting at sunrise or sunset and bringing a picnic to enjoy the view. Check out my guide on hiking Whitaker Point and find out everything to expect.
+                </div>
+            </div>
+            <div class="see-location">
+                <a href="https://www.google.com/maps/place/Co+Rd+5,+Kingston,+AR+72742/@35.908547,-93.4582415,17z/data=!3m1!4b1!4m6!3m5!1s0x87cea10178517dbd:0x2971376eea30319c!8m2!3d35.908547!4d-93.4556666!16s%2Fg%2F1tp2_xnw?authuser=0&entry=ttu">See Location</a>
+            </div>
+        </div>
+        <div class="postcard">
+            <img src="scenic2.jpg" alt="Scenic Spot 2">
+            <div class="postcard-info">
+                <div class="spot-name">Blue Springs Heritage Center</div>
+                <div class="description">
+                    This attraction near Eureka Springs features crystal blue waters in a botanic garden setting. I think this is a beautiful spot, but the admission price is quite hefty ($13.75/adult) with very little to do.
+                </div>
+            </div>
+            <div class="see-location">
+                <a href="https://www.google.com/maps/place/1537+Co+Rd+210,+Eureka+Springs,+AR+72632/@36.465675,-93.8155987,17z/data=!3m1!4b1!4m6!3m5!1s0x87c92bf711f0d4d7:0xd7b475d2f6ae9209!8m2!3d36.465675!4d-93.8130238!16s%2Fg%2F11b8z9b7fb?authuser=0&entry=ttu">See Location</a>
+            </div>
+        </div>
+        <div class="postcard">
+            <img src="scenic3.jpg" alt="Scenic Spot 3">
+            <div class="postcard-info">
+                <div class="spot-name">Garvan Woodland Gardens</div>
+                <div class="description">
+                    Garvan Woodland Gardens is a 210-acre botanical garden featuring several speciality gardens, a treehouse, and scenic overlooks. It is located in Hot Springs, Arkansas, so be sure to visit Hot Springs National Park while you’re in the area. It is a great way to spend an afternoon. Admission is $15/adult.
+                </div>
+            </div>
+            <div class="see-location">
+                <a href="https://www.google.com/maps/place/550+Arkridge+Rd,+Hot+Springs+National+Park,+AR+71913/@34.4340592,-93.0483032,17z/data=!3m1!4b1!4m6!3m5!1s0x8632d4f0fa9dde07:0x89cbc5e2de7f8065!8m2!3d34.4340592!4d-93.0457283!16s%2Fg%2F11c2gnsk6t?authuser=0&entry=ttu">See Location</a>
+            </div>
+        </div>
+        <div class="postcard">
+            <img src="scenic4.jpg" alt="Scenic Spot 4">
+            <div class="postcard-info">
+                <div class="spot-name">Kings River Falls Natural Area</div>
+                <div class="description">
+                    Kings River Falls Trail features cascading waterfalls at the end of the trail! This natural area is also a refreshing swimming hole on a sunny day. The trail is incredibly scenic, and you’ll find beautiful viewpoints along the river on the way to the waterfall – definitely an Arkansas gem!
+                </div>
+            </div>
+            <div class="see-location">
+                <a href="https://www.google.com/maps/place/1543+Madison+3500,+Witter,+AR+72776/@35.8945809,-93.5860212,17z/data=!3m1!4b1!4m5!3m4!1s0x87cea8777e5607ab:0x1c25e77a2065754a!8m2!3d35.8945809!4d-93.5834463?authuser=0&entry=ttu">See Location</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

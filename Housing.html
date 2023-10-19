@@ -10,12 +10,16 @@
             padding: 0;
         }
 
+        .tile-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .tile {
-            width: 200px;
-            height: 200px;
-            border: 1px solid #ccc;
+            flex: 1; /* Equal-width tiles */
+            max-width: 300px; /* Maximum width for each tile */
             margin: 10px;
-            float: left;
             text-align: center;
             padding: 10px;
             background-color: #3498db; /* Blue - Tile background color */
@@ -44,25 +48,27 @@
 </head>
 <body>
     <h1>Welcome to Housing Solutions for International Students</h1>
-    <div class="tile">
-        <h2><a href="#accommodation">FINDING ACCOMMODATION</a></h2>
-        <p>Find the perfect place to stay during your studies.</p>
-    </div>
-    <div class="tile">
-        <h2><a href="#roommates">FINDING ROOMMATES</a></h2>
-        <p>Connect with potential roommates for shared housing.</p>
-    </div>
-    <div class="tile">
-        <h2><a href="#transportation">TRANSPORTATION</a></h2>
-        <p>Discover transportation options in your new city.</p>
-    </div>
-    <div class="tile">
-        <h2><a href="#furniture">FURNITURE</a></h2>
-        <p>Furnish your accommodation with essential furniture.</p>
-    </div>
-    <div class="tile">
-        <h2><a href="#amenities">AMENITIES OF APARTMENT</a></h2>
-        <p>Explore amenities available in different apartment complexes.</p>
+    <div class="tile-container">
+        <div class="tile">
+            <h2><a href="accommodation.html">FINDING ACCOMMODATION</a></h2>
+            <p>Find the perfect place to stay during your studies.</p>
+        </div>
+        <div class="tile">
+            <h2><a href="roommates.html">FINDING ROOMMATES</a></h2>
+            <p>Connect with potential roommates for shared housing.</p>
+        </div>
+        <div class="tile">
+            <h2><a href="transportation.html">TRANSPORTATION</a></h2>
+            <p>Discover transportation options in your new city.</p>
+        </div>
+        <div class="tile">
+            <h2><a href="furniture.html">FURNITURE</a></h2>
+            <p>Furnish your accommodation with essential furniture.</p>
+        </div>
+        <div class="tile">
+            <h2><a href="amenities.html">AMENITIES OF APARTMENT</a></h2>
+            <p>Explore amenities available in different apartment complexes.</p>
+        </div>
     </div>
 </body>
 </html>

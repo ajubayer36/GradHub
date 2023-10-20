@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Accommodation</title>
+</head>
+<body>
+    <h1>Find Accommodation</h1>
+
+    <div class="tabs">
+        <button class="tab" id="tab1" onclick="switchTab(1)">Search by Location</button>
+        <button class="tab" id="tab2" onclick="switchTab(2)">Find by Rent Range</button>
+        <button class="tab" id="tab3" onclick="switchTab(3)">Compare</button>
+    </div>
+
+    <div id="tabContent1" class="tab-content">
+        <h2>Search by Location</h2>
+        <input type="text" id="locationSearch" placeholder="Enter city name">
+        <button onclick="searchByLocation()">Search</button>
+        <div id="locationResults">
+            <!-- Accommodation search results will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Replace the sliders with dropdowns within the "Find by Rent Range" tab content -->
+    <div id="tabContent2" class="tab-content">
+        <h2>Find by Rent Range</h2>
+        <p>Filter accommodations by rent range:</p>
+        <label id="minRentLabel" for="minRent">Min Rent:</label>
+        <select id="minRent"></select>
+        <br>
+        <label id="maxRentLabel" for="maxRent">Max Rent:</label>
+        <select id="maxRent"></select>
+        <button onclick="filterByRentRange()">Filter</button>
+        <div id="resultsByRentRange">
+            <!-- Accommodation search results will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Add the following HTML within the "Compare" tab content -->
+    <div id="tabContent3" class="tab-content">
+        <h2>Compare</h2>
+        <p>Price Range Comparison by City:</p>
+        <div id="cityComparison" class="city-comparison-container">
+            <!-- City comparison cards will be displayed here -->
+        </div>
+    </div>
+
+
+    <script type="application/javascript">
+        // Sample in-memory accommodation data
+        const accommodations = [
+    // Fayetteville Apartments
+    {
+        id: 1,
+        name: "The Overlook",
+        address: {
+            streetNum: "123",
+            streetName: "The Shining St",
+            city: "Fayetteville",
+            state: "Arkansas",
+            zipCode: "72759",
+        },
+        phoneNumber: "555-123-4567",
+        googleMapsLink: "https://maps.google.com/1",
+        distanceFromSchool: "1 mile",
+        units: [
+            {
+                bedrooms: 2,
+                squareFeet: 1000,
+                bathrooms: 1.5,
+                price: 1200,
+            },
+            {
+                bedrooms: 3,
+                squareFeet: 1500,
+                bathrooms: 2,
+                price: 1500,
+            },
+        ],
+    },
+    {
+        id: 2,
+        name: "The Bates",
+        address: {
+            streetNum: "1960",
+            streetName: "Psycho Alley",
+            city: "Fayetteville",
+            state: "Arkansas",
+            zipCode: "72759",
+        },
+        phoneNumber: "555-123-4567",
+        googleMapsLink: "https://maps.google.com/2",
+        distanceFromSchool: "1.2 mile",
+        units: [
+            {
+                bedrooms: 2,
+                squareFeet: 1200,
+                bathrooms: 3,
+                price: 1700,
+            },
+            {
+                bedrooms: 1,
+                squareFeet: 750,
+                bathrooms: 1,
+                price: 700,
+            },
+        ],
+    },
+
+    // Rogers Apartments
+    {
+        id: 3,
+        name: "Wayne Mansion",
+        address: {
+            streetNum: "456",
+            streetName: "'Bat' Hill Rd",
+            city: "Rogers",
+            state: "Arkansas",
+            zipCode: "72758",
+        },
+        phoneNumber: "555-987-6543",
+        googleMapsLink: "https://maps.google.com/3",
+        distanceFromSchool: "2 miles",
+        units: [
+            {
+                bedrooms: 1,
+                squareFeet: 750,
+                bathrooms: 1,
+                price: 800,
+            },
+            {
+                bedrooms: 2,
+                squareFeet: 1100,
+                bathrooms: 2,
+                price: 1200,
+            },
+        ],
+    },
+    {
+        name: "Spider Head Apartments",
+        address: {
+            streetNum: "456",
+            streetName: "Parker Street",
+            city: "Rogers",
+            state: "Arkansas",
+            zipCode: "72758",
+        },
+        phoneNumber: "555-987-6543",
+        googleMapsLink: "https://maps.google.com/sample2",
+        distanceFromSchool: "2 miles",
+        units: [
+            {
+                bedrooms: 1,
+                squareFeet: 750,
+                bathrooms: 1,
+                price: 800,
+            },
+            {
+                bedrooms: 2,
+                squareFeet: 1100,
+                bathrooms: 2,
+                price: 1200,
+            },
+        ],
+    },
+    {
+        name: "Asgardian Apartments",
+        address: {
+            streetNum: "7890",
+            streetName: "Thunder Rd",
+            city: "Bentonville",
+            state: "Arkansas",
+            zipCode: "72756",
+        },
+        phoneNumber: "555-987-6543",
+        googleMapsLink: "https://maps.google.com/sample2",
+        distanceFromSchool: "2 miles",
+        units: [
+            {
+                bedrooms: 1,
+                squareFeet: 750,
+                bathrooms: 1,
+                price: 800,
+            },
+            {
+                bedrooms: 2,
+                squareFeet: 1100,
+                bathrooms: 2,
+                price: 1200,
+            },
+        ],
+    },
+    // Add more accommodation data as needed
+];
+
+    // Function to switch tabs
+    function switchTab(tabId) {
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`tabContent${i}`).style.display = i === tabId ? "block" : "none";
+        }
+    }
+
+    // Function to search for accommodations by location
+    function searchByLocation() {
+        const locationSearchInput = document.getElementById("locationSearch").value.trim().toLowerCase();
+        const locationResults = document.getElementById("locationResults");
+        locationResults.innerHTML = "";
+
+        const results = accommodations.filter((accommodation) => {
+            return accommodation.address.city.toLowerCase().includes(locationSearchInput);
+        });
+
+        if (results.length === 0) {
+            locationResults.innerHTML = "No accommodations found in the specified location.";
+        } else {
+            results.forEach((accommodation, index) => {
+                const cardElement = document.createElement("div");
+                cardElement.className = "accommodation-card";
+                cardElement.innerHTML = `
+                    <div class="card-content">
+                        <h3>${accommodation.name}</h3>
+                        <p><strong>Address:</strong> ${accommodation.address.streetNum} ${accommodation.address.streetName}, ${accommodation.address.city}, ${accommodation.address.state}, ${accommodation.address.zipCode}</p>
+                        <p><strong>Phone Number:</strong> ${accommodation.phoneNumber}</p>
+                        <p><a href="${accommodation.googleMapsLink}" target="_blank">Google Maps Link</a></p>
+                        <p><strong>Distance from School:</strong> ${accommodation.distanceFromSchool}</p>
+                    </div>
+                `;
+
+                // Create a nested card for each unit
+                const units = accommodation.units;
+                if (units && units.length > 0) {
+                    const unitsContainer = document.createElement("div");
+                    unitsContainer.className = "units-container";
+                    units.forEach((unit) => {
+                        const unitCard = document.createElement("div");
+                        unitCard.className = "unit-card";
+                        unitCard.innerHTML = `
+                            <h4>Unit Details</h4>
+                            <p><strong>Bedrooms:</strong> ${unit.bedrooms}</p>
+                            <p><strong>Square Feet:</strong> ${unit.squareFeet}</p>
+                            <p><strong>Bathrooms:</strong> ${unit.bathrooms}</p>
+                            <p><strong>Price:</strong> $${unit.price}</p>
+                        `;
+                        unitsContainer.appendChild(unitCard);
+                    });
+                    cardElement.appendChild(unitsContainer);
+                }
+
+                locationResults.appendChild(cardElement);
+            });
+
+        }
+    }
+
+
+    // Define min and max rent values based on the accommodations data
+    const minRentValue = Math.min(...accommodations.map((accommodation) => Math.min(...accommodation.units.map((unit) => unit.price))));
+    const maxRentValue = Math.max(...accommodations.map((accommodation) => Math.max(...accommodation.units.map((unit) => unit.price))));
+
+    // Function to populate the rent range dropdowns
+    function populateRentDropdowns() {
+        const minRentDropdown = document.getElementById("minRent");
+        const maxRentDropdown = document.getElementById("maxRent");
+
+        for (let i = minRentValue; i <= maxRentValue; i += 100) {
+            const minOption = document.createElement("option");
+            minOption.value = i;
+            minOption.textContent = `$${i}`;
+            minRentDropdown.appendChild(minOption);
+
+            const maxOption = document.createElement("option");
+            maxOption.value = i;
+            maxOption.textContent = `$${i}`;
+            maxRentDropdown.appendChild(maxOption);
+        }
+    }
+
+    // Call the function to populate the dropdowns
+    populateRentDropdowns();
+
+
+    // Function to update the rent range labels
+    function updateRentLabels() {
+        const minRentLabel = document.getElementById("minRentLabel");
+        const maxRentLabel = document.getElementById("maxRentLabel");
+        const minRentValue = document.getElementById("minRent").value;
+        const maxRentValue = document.getElementById("maxRent").value;
+
+        minRentLabel.textContent = `$${minRentValue}`;
+        maxRentLabel.textContent = `$${maxRentValue}`;
+    }
+
+    // Function to filter accommodations by rent range
+    function filterByRentRange() {
+        const minRentValue = parseInt(document.getElementById("minRent").value);
+        const maxRentValue = parseInt(document.getElementById("maxRent").value);
+
+        const filteredResults = accommodations.filter((accommodation) => {
+            return accommodation.units.some((unit) => unit.price >= minRentValue && unit.price <= maxRentValue);
+        });
+
+        displayFilteredResults(filteredResults);
+    }
+
+    // Function to display filtered results
+    function displayFilteredResults(filteredResults) {
+        const locationResults = document.getElementById("resultsByRentRange");
+        locationResults.innerHTML = ""; // Clear the previous results
+
+        filteredResults.forEach((accommodation, index) => {
+            const cardElement = document.createElement("div");
+            cardElement.className = "accommodation-card";
+            cardElement.innerHTML = `
+                <div class="card-content">
+                    <h3>${accommodation.name}</h3>
+                    <p><strong>Address:</strong> ${accommodation.address.streetNum} ${accommodation.address.streetName}, ${accommodation.address.city}, ${accommodation.address.state}, ${accommodation.address.zipCode}</p>
+                    <p><strong>Phone Number:</strong> ${accommodation.phoneNumber}</p>
+                    <p><a href="${accommodation.googleMapsLink}" target="_blank">Google Maps Link</a></p>
+                    <p><strong>Distance from School:</strong> ${accommodation.distanceFromSchool}</p>
+                </div>
+            `;
+
+            // Create a nested card for each unit
+            const units = accommodation.units;
+            if (units && units.length > 0) {
+                const unitsContainer = document.createElement("div");
+                unitsContainer.className = "units-container";
+                units.forEach((unit) => {
+                    const unitCard = document.createElement("div");
+                    unitCard.className = "unit-card";
+                    unitCard.innerHTML = `
+                        <h4>Unit Details</h4>
+                        <p><strong>Bedrooms:</strong> ${unit.bedrooms}</p>
+                        <p><strong>Square Feet:</strong> ${unit.squareFeet}</p>
+                        <p><strong>Bathrooms:</strong> ${unit.bathrooms}</p>
+                        <p><strong>Price:</strong> $${unit.price}</p>
+                    `;
+                    unitsContainer.appendChild(unitCard);
+                });
+                cardElement.appendChild(unitsContainer);
+            }
+
+            locationResults.appendChild(cardElement);
+        });
+}
+
+
+    const cityImages = {
+        "Fayetteville": "fayetteville.png",
+        "Rogers": "rogers.jpg",
+        "Bentonville": "bentonville.jpg"
+        // Add image URLs for other cities as needed
+    };
+
+    // Function to populate city comparison cards
+    function populateCityComparison() {
+        const cityComparisonContainer = document.getElementById("cityComparison");
+
+        const cityData = {};
+
+        // Calculate price ranges for each city and include city image
+        accommodations.forEach((accommodation) => {
+            const city = accommodation.address.city;
+            const units = accommodation.units;
+
+            if (!cityData[city]) {
+                cityData[city] = {
+                    minPrice: Infinity,
+                    maxPrice: -Infinity,
+                    image: cityImages[city], // Fetch the image URL from cityImages
+                };
+            }
+
+            units.forEach((unit) => {
+                if (unit.price < cityData[city].minPrice) {
+                    cityData[city].minPrice = unit.price;
+                }
+
+                if (unit.price > cityData[city].maxPrice) {
+                    cityData[city].maxPrice = unit.price;
+                }
+            });
+        });
+
+        // Create city comparison cards
+        for (const city in cityData) {
+            const cardElement = document.createElement("div");
+            cardElement.className = "city-comparison-card";
+            cardElement.innerHTML = `
+                    <div>
+                        <img height="250px" src="${cityData[city].image}" alt="${city}" class="city-image">
+                    </div>
+                <h3>${city}</h3>
+                <p>Price Range: $${cityData[city].minPrice} - $${cityData[city].maxPrice}</p>
+            `;
+
+            cityComparisonContainer.appendChild(cardElement);
+        }
+    }
+
+
+    // Call the function to populate the city comparison cards
+    populateCityComparison();
+
+
+    // Set the initial slider values and labels
+    document.getElementById("minRent").min = minRentValue;
+    document.getElementById("minRent").max = maxRentValue;
+    document.getElementById("maxRent").min = minRentValue;
+    document.getElementById("maxRent").max = maxRentValue;
+    document.getElementById("minRent").value = minRentValue;
+    document.getElementById("maxRent").value = maxRentValue;
+    updateRentLabels();
+
+
+    // Initialize the default tab
+    switchTab(1);
+
+    </script>
+
+</body>
+</html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#tabContent1 {
+    display: block;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#locationResults {
+    margin-top: 20px;
+}
+
+.accommodation-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.accommodation-card:hover {
+    transform: scale(1.02);
+}
+
+.accommodation-card .card-content {
+    padding: 10px;
+}
+
+.accommodation-card h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #333;
+}
+
+.accommodation-card p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.accommodation-card a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+/* Style for unit cards */
+.unit-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f5f5f5;
+}
+
+.unit-card h4 {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 0;
+}
+
+.unit-card p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.units-container {
+    padding: 10px;
+    background-color: #fff;
+}
+
+.city-comparison-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px;
+    background-color: #fff;
+    flex-basis: calc(33.33% - 20px); /* Three cards per row with 20px margin */
+}
+
+.city-comparison-card h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #333;
+}
+
+.city-comparison-card p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.city-comparison-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 -10px; /* To counteract the card margins */
+}
+
+/* Add more styles as needed for customization */
+
+
+/* Add more styles as needed for customization */
+
+
+
+/* Add more CSS for styling as needed */
+
+</style>

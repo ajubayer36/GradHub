@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Meal Plans</title>
+    <style>
+        body {
+            background-color: #1E1E1E;
+            /* IntelliJ IDEA Dark Background Color */
+            color: #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            font-family: Arial, sans-serif;
+        }
+
+        .meal-plan-container {
+            text-align: center;
+        }
+
+        .meal-plan-links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .meal-plan-link {
+            margin: 10px;
+            padding: 10px;
+            background-color: #3E3E3E;
+            /* IntelliJ IDEA Dark Component Background Color */
+            color: #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            text-decoration: none;
+            border: 1px solid #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+        }
+
+        .meal-plan-link:hover {
+            background-color: #606060;
+            /* IntelliJ IDEA Dark Component Background Hover Color */
+        }
+
+        .meal-plan-section {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fade-in 1s forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .meal-plan-card {
+            background-color: #3E3E3E;
+            /* IntelliJ IDEA Dark Component Background Color */
+            color: #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            border: 1px solid #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+            margin: 1px auto;
+            width: 80%;
+            /* Adjust the width as needed */
+        }
+
+        .joint {
+            background-color: #D4D4D4;
+            /* IntelliJ IDEA Dark Component Background Color */
+            color: #3E3E3E;
+            /* IntelliJ IDEA Dark Text Color */
+            border: 1px solid #3E3E3E;
+            /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 10px auto;
+            width: 60%;
+            /* Adjust the width as needed */
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            var allSections = document.getElementsByClassName('meal-plan-section');
+            for (var i = 0; i < allSections.length; i++) {
+                allSections[i].style.display = "none";
+                allSections[i].classList.remove("fade-in");
+            }
+            var section = document.getElementById(sectionId);
+            section.style.display = "block";
+            section.classList.add("fade-in");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="meal-plan-container">
+        <h1>Meal Options for Students</h1>
+        <div class="meal-plan-links">
+            <a href="javascript:void(0);" onclick="showSection('vegetarian')" class="meal-plan-link">Vegetarian</a>
+            <a href="javascript:void(0);" onclick="showSection('vegan')" class="meal-plan-link">Vegan</a>
+            <a href="javascript:void(0);" onclick="showSection('non-vegetarian')"
+                class="meal-plan-link">Non-Vegetarian</a>
+            <a href="javascript:void(0);" onclick="showSection('other-dietary')" class="meal-plan-link">Other Dietary
+                Options</a>
+        </div>
+    </div>
+
+    <!-- Vegetarian Section -->
+    <div id="vegetarian" class="meal-plan-section fade-in meal-plan-card" style="display: block;">
+        <h3 style="text-align: center;">Vegetarian</h3>
+    </div>
+
+
+    <!-- Vegan Section -->
+    <div id="vegan" class="meal-plan-section fade-in meal-plan-card">
+        <h3 style="text-align: center;">Vegan</h3>
+    </div>
+
+    <!-- Non-Vegetarian Section -->
+    <div id="non-vegetarian" class="meal-plan-section fade-in meal-plan-card">
+        <h3 style="text-align: center;">Non-Vegetarian</h3>
+    </div>
+
+    <!-- Other Dietary Options Section -->
+    <div id="other-dietary" class="meal-plan-section fade-in meal-plan-card">
+        <h3 style="text-align: center;">Other Dietary Options</h3>
+    </div>
+</body>
+
+</html>

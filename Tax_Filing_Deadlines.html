@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tax Filing Deadlines</title>
+    <style>
+        .collapsible {
+            background-color: #f1f1f1;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            width: 100%;
+            outline: none;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tax Filing Deadlines</h1>
+    
+    <button class="collapsible">Individual Income Tax (Form 1040)</button>
+    <div class="content">
+        <p><strong>Description:</strong> The deadline for filing individual income tax returns using Form 1040.</p>
+        <p><strong>Deadline:</strong> Generally April 15th</p>
+    </div>
+
+    <button class="collapsible">Business Income Tax (Form 1120/1120S/1065)</button>
+    <div class="content">
+        <p><strong>Description:</strong> The deadline for filing business income tax returns for corporations (Form 1120), S corporations (Form 1120S), and partnerships (Form 1065).</p>
+        <p><strong>Deadline:</strong> Generally March 15th</p>
+    </div>
+
+    <button class="collapsible">Self-Employment Tax (Schedule SE)</button>
+    <div class="content">
+        <p><strong>Description:</strong> The deadline for reporting self-employment tax on Schedule SE, typically filed by self-employed individuals.</p>
+        <p><strong>Deadline:</strong> Generally April 15th</p>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

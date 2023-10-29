@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Collapsible Sections</title>
+    <style>
+        .collapsible {
+            background-color: #f1f1f1;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            width: 100%;
+            outline: none;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Federal Tax Forms</h1>
+    
+    <button class="collapsible">Nonresident Alien with Income</button>
+    <div class="content">
+        <p><strong>Name of the Form:</strong> Form 1040-NR, U.S. Nonresident Alien Income Tax Return</p>
+        <p><strong>Filing Deadline:</strong> Generally, April 15th </p>
+    </div>
+
+    <button class="collapsible">Resident Alien with Income</button>
+    <div class="content">
+        <p><strong>Name of the Form:</strong> Form 1040, U.S. Individual Income Tax Return</p>
+        <p><strong>Filing Deadline:</strong> Generally, April 15th</p>
+    </div>
+	
+	<button class="collapsible">Nonresident Aliens and Resident Aliens</button>
+    <div class="content">
+        <p><strong>Name of the Form:</strong> Forms 1040 and 1040-NR, as applicable</p>
+        <p><strong>Filing Deadline:</strong> Check the relevant form's deadline</p>
+    </div>
+	
+	<button class="collapsible">Nonresident Aliens and Resident Aliens with Income</button>
+    <div class="content">
+        <p><strong>Name of the Form:</strong> Forms 1040 and 1040-NR, as applicable</p>
+        <p><strong>Filing Deadline:</strong> Check the relevant form's deadline</p>
+    </div>
+	
+	<button class="collapsible">Nonresident Aliens on F-1, F-2, J-1, J-2, M-1, M-2, Q-1, Q-2</button>
+    <div class="content">
+        <p><strong>Name of the Form:</strong> Form 1040-NR or Form 8843, Statement for Exempt Individuals and Individuals with a Medical Condition</p>
+        <p><strong>Filing Deadline:</strong> Generally, April 15th (for Form 8843); check the relevant form's deadline</p>
+    </div>
+
+    <!-- Add more sections as needed -->
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

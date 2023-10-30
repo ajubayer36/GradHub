@@ -3,21 +3,69 @@
 
 <head>
     <title>Transcripts</title>
+    <style>
+        body {
+            background-color: #1E1E1E; /* IntelliJ IDEA Dark Background Color */
+            color: #D4D4D4; /* IntelliJ IDEA Dark Text Color */
+            font-family: Arial, sans-serif;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .links-row {
+            display: flex;
+            justify-content: center;
+            background-color: #3E3E3E; /* IntelliJ IDEA Dark Component Background Color */
+            padding: 10px;
+        }
+
+        .link {
+            cursor: pointer;
+            color: #80CBC4; /* IntelliJ IDEA Dark Link Color */
+            margin: 0 20px;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+        .links {
+            color: #1E1E1E; /* IntelliJ IDEA Dark Background Color */
+            background-color: #D4D4D4; /* IntelliJ IDEA Dark Component Background Color */
+        }
+    </style>
+    <script>
+        function toggleSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
 </head>
 
 <body>
     <header>
         <h1>Transcripts</h1>
     </header>
-    <section>
+    <div class="links-row">
+        <span class="link" onclick="toggleSection('transcripts')">Transcripts</span>
+        <span class="link" onclick="toggleSection('language-tests')">Language Proficiency Tests</span>
+        <span class="link" onclick="toggleSection('visa-docs')">Visa Documentation</span>
+    </div>
+
+    <section id="transcripts" class="section active">
         <h2>List of Accepted Transcripts</h2>
+        <!-- Your existing content for the Transcripts section -->
+        <!-- You can leave this section as is -->
         <div>
             <h3>Unofficial Transcripts</h3>
             <div>
-                <div id="collapse-d17e75-d17e79" class="panel-collapse in" role="tabpanel" style="height: auto;">
-                    <div class="panel-body">
-                                               
-                       <p>Unofficial transcripts are uploaded as part of the application process.</p>
+                <p>Unofficial transcripts are uploaded as part of the application process.</p>
                                                
                        <p>Upload <em>unofficial copies*</em> academic records/transcripts/mark sheets into your UA Connect applicant center.&nbsp;
                           For evaluation purposes, you may submit an unofficial copy of each transcript needed.&nbsp;&nbsp;
@@ -33,9 +81,6 @@
                           the submitted transcripts and certificates.&nbsp; Translations must be stamped or embossed
                           by the issuing institutions to verify that it is a literal translation.
                        </div>
-                                           
-                    </div>
-                 </div>
             </div>
         </div>
         <div>
@@ -121,6 +166,25 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="language-tests" class="section">
+        <h2>Language Proficiency Tests</h2>
+        <ul>
+            <li class="links">
+                TOEFL - <a href="https://www.ets.org/toefl.html">link</a>
+            </li>
+            <li class="links">
+                GRE - <a href="https://www.ets.org/gre.html">link</a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="visa-docs" class="section">
+        <h2>Visa Documentation</h2>
+        <div class="links">
+            Visa documentation can be found here: <a href="https://educationusa.state.gov/foreign-institutions-and-governments/understanding-us-higher-education/international-student">link</a>
         </div>
     </section>
 </body>

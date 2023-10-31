@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carnivals, Concerts, and Fairs</title>
+  <style>
+    /* Add your CSS styling here */
+  </style>
+</head>
+<body>
+  <h1>Carnivals, Concerts, and Fairs</h1>
+
+  <label for="citySelect">Select a city:</label>
+  <select id="citySelect">
+    <option value="Fayetteville">Fayetteville</option>
+    <option value="Dallas">Dallas</option>
+    <option value="Austin">Austin</option>
+  </select>
+
+  <button id="selectButton">Search</button>
+
+  <div id="eventDetails">
+    <!-- Event details will be displayed here -->
+  </div>
+
+  <script>
+    // Sample data for events in different cities
+    const events = {
+      Fayetteville: [
+        {
+          name: "Fayetteville Carnival",
+          hours: "10:00 AM - 9:00 PM",
+          priceRange: "$10 - $25",
+          officialSite: "http://www.fayettevillecarnival.com",
+          showtime: "Nightly fireworks at 8:00 PM"
+        },
+		{
+		  name: "Fayetteville Music Fest",
+		  hours: "3:00 PM - 11:00 PM",
+		  priceRange: "$20 - $50",
+		  officialSite: "http://www.fayettevillemusicfest.com",
+		  showtime: "Headliner performance at 9:30 PM"
+        }
+        // Add more events for Fayetteville
+      ],
+      Dallas: [
+        {
+          name: "Dallas Concert",
+          hours: "6:00 PM - 11:00 PM",
+          priceRange: "$30 - $60",
+          officialSite: "http://www.dallasconcerts.com",
+          showtime: "Main performance at 9:00 PM"
+        },
+		{
+		  name: "Dallas County Fair",
+		  hours: "12:00 PM - 10:00 PM",
+		  priceRange: "$15 - $35",
+		  officialSite: "http://www.dallascountyfair.com",
+		  showtime: "Rodeo at 7:30 PM"
+		}
+        // Add more events for Dallas
+      ],
+      Austin: [
+        {
+          name: "Austin Fair",
+          hours: "11:00 AM - 8:00 PM",
+          priceRange: "$15 - $40",
+          officialSite: "http://www.austinfair.com",
+          showtime: "Various showtimes throughout the day"
+        },
+		{
+		  name: "Austin Summer Concert Series",
+		  hours: "5:00 PM - 10:00 PM",
+		  priceRange: "$25 - $55",
+		  officialSite: "http://www.austinconcerts.com",
+		  showtime: "Live bands from 6:30 PM"
+		}
+        // Add more events for Austin
+      ]
+    };
+
+    const citySelect = document.getElementById("citySelect");
+    const eventDetails = document.getElementById("eventDetails");
+    const selectButton = document.getElementById("selectButton");
+
+    // Event listener to handle city selection
+    selectButton.addEventListener("click", () => {
+      const selectedCity = citySelect.value;
+      const cityEvents = events[selectedCity];
+
+      if (cityEvents) {
+        // Generate HTML for events in the selected city
+        const eventHTML = cityEvents.map(event => {
+          return `
+            <div>
+              <h2>${event.name}</h2>
+              <p>Operating Hours: ${event.hours}</p>
+              <p>Price Range: ${event.priceRange}</p>
+              <p>Official Site: <a href="${event.officialSite}" target="_blank">${event.officialSite}</a></p>
+              <p>Showtime: ${event.showtime}</p>
+            </div>
+          `;
+        }).join('');
+
+        eventDetails.innerHTML = eventHTML;
+      } else {
+        eventDetails.innerHTML = "<p>No events found for the selected city.</p>";
+      }
+    });
+  </script>
+</body>
+</html>

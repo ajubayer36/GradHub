@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Meal Plans</title>
+    <style>
+        body {
+            background-color: #1E1E1E;
+            /* IntelliJ IDEA Dark Background Color */
+            color: #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            font-family: Arial, sans-serif;
+        }
+
+        .meal-plan-container {
+            text-align: center;
+        }
+
+        .meal-plan-links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .meal-plan-link {
+            margin: 10px;
+            padding: 10px;
+            background-color: #3E3E3E;
+            /* IntelliJ IDEA Dark Component Background Color */
+            color: #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            text-decoration: none;
+            border: 1px solid #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+        }
+
+        .meal-plan-link:hover {
+            background-color: #606060;
+            /* IntelliJ IDEA Dark Component Background Hover Color */
+        }
+
+        .meal-plan-section {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fade-in 1s forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .meal-plan-card {
+            background-color: #3E3E3E;
+            /* IntelliJ IDEA Dark Component Background Color */
+            color: #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            border: 1px solid #D4D4D4;
+            /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+            margin: 1px auto;
+            width: 80%;
+            /* Adjust the width as needed */
+        }
+
+        .joint {
+            background-color: #D4D4D4;
+            /* IntelliJ IDEA Dark Component Background Color */
+            color: #3E3E3E;
+            /* IntelliJ IDEA Dark Text Color */
+            border: 1px solid #3E3E3E;
+            /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 10px auto;
+            width: 60%;
+            /* Adjust the width as needed */
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            var allSections = document.getElementsByClassName('meal-plan-section');
+            for (var i = 0; i < allSections.length; i++) {
+                allSections[i].style.display = "none";
+                allSections[i].classList.remove("fade-in");
+            }
+            var section = document.getElementById(sectionId);
+            section.style.display = "block";
+            section.classList.add("fade-in");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="meal-plan-container">
+        <h1>Meal Options for Students</h1>
+        <div class="meal-plan-links">
+            <a href="javascript:void(0);" onclick="showSection('vegetarian')" class="meal-plan-link">Vegetarian</a>
+            <a href="javascript:void(0);" onclick="showSection('vegan')" class="meal-plan-link">Vegan</a>
+            <a href="javascript:void(0);" onclick="showSection('non-vegetarian')"
+                class="meal-plan-link">Non-Vegetarian</a>
+            <a href="javascript:void(0);" onclick="showSection('other-dietary')" class="meal-plan-link">Other Dietary
+                Options</a>
+        </div>
+    </div>
+
+    <!-- Vegetarian Section -->
+    <div id="vegetarian" class="meal-plan-section fade-in meal-plan-card" style="display: block;">
+        <h3 style="text-align: center;">Vegetarian</h3>
+        <div id="better-call-saul" class="joint">
+            <h3>Breakfast at Saul Goodman's</h3>
+            <strong>Hours of Operation:</strong>
+            <p>Monday-Sunday: 7:00 AM - 12:00 PM</p>
+
+            <strong>Menu and Price:</strong>
+            <ul>
+                <li>Breakfast:
+                    <ul>
+                        <li>
+                            <strong>Saul's Speedy Justice - $6.99</strong><br />
+                            Speed cooked Spinach
+                        </li>
+                        <li>
+                            <strong>No Hanky Panky - $5.99</strong><br />
+                            DEA recommended Fettucine
+                        </li>
+                        <li>
+                            <strong>The Kevin Costner - $8.99</strong><br>
+                            Cheese sandwich with tomatoes and onions convincingly looks like Kevin Costner
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <strong>Contact:</strong>
+            <address>
+                <p>
+                    Address: 308 Negra Arroyo Lane
+                    <br />
+                    Phone: (bta)-cal-saul
+                    <br />
+                    Email: <a href="mailto:lwyr-up@albuquerque.com">lwyr-up@albuquerque.com</a>
+                </p>
+            </address>
+        </div>
+        <hr />
+        <!-- harry potter Section -->
+        <div id="harry-potter" class="joint">
+            <h3>Gryffindor's House of Pancakes</h3>
+            <strong>Hours of Operation:</strong>
+            <p>Monday-Sunday: 7:00 AM - 3:00 PM</p>
+
+            <strong>Menu and Price:</strong>
+            <ul>
+                <li>Breakfast:
+                    <ul>
+                        <li>
+                            <strong>Butterbeer Pancakes:</strong><br>
+                            Fluffy pancakes drizzled with a warm butterscotch syrup - $6.99
+                        </li>
+                        <li>
+                            <strong>Gillyweed Green Smoothie:</strong><br>
+                            A nutritious green smoothie featuring ingredients - $5.99
+                        </li>
+                        <li>
+                            <strong>Polyjuice Potion Coffee:</strong><br>
+                            A mysterious coffee blend that can change flavors with a twist - $8.99
+                        </li>
+                        <li>
+                            <strong>Elder Wand French Toast:</strong><br>
+                            French toast sticks served with a rich, chocolate dipping sauce - $7.99
+                        </li>
+                    </ul>
+                </li>
+                <li>Lunch:
+                    <ul>
+                        <li><strong>Gryffindor Grilled Cheese:</strong><br>
+                            Gourmet grilled cheese sandwich with cheddar and roasted tomato - $9.99
+                        </li>
+                        <li><strong>Hufflepuff Hummus Wrap:</strong><br>
+                            Hummus wrap with fresh veggies and tahini dressing - $8.49
+                        </li>
+                        <li><strong>Ravenclaw Ravioli:</strong><br>
+                            Spinach and ricotta-filled ravioli with herb-infused sauce - $11.99
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <strong>Contact:</strong>
+            <address>
+                <p>
+                    Address: 9 3/4 King Cross Station
+                    <br />
+                    Phone: (123)-iam-harry
+                    <br />
+                    Email: <a href="mailto:wanderful-cafe@hogwarts.com">wanderful-cafe@hogwarts.com</a>
+                </p>
+            </address>
+        </div>
+    </div>
+
+
+    <!-- Vegan Section -->
+    <div id="vegan" class="meal-plan-section fade-in meal-plan-card">
+        <h3 style="text-align: center;">Vegan</h3>
+        <!-- karen section -->
+        <div id="karen" class="joint">
+            <h3>Aunt Karen's Vegan Joint</h3>
+            <strong>Hours of Operation:</strong>
+            <p>Monday-Sunday: 8:00 AM - 12:00 PM</p>
+
+            <strong>Menu and Price:</strong>
+            <ul>
+                <li>Breakfast:
+                    <ul>
+                        <li>
+                            <strong>Karen's water:</strong><br>
+                            Pour it yourself - $2999.99
+                        </li>
+                        <li>
+                            <strong>Karen's Pizza:</strong><br>
+                            Broccoli served, uncooked, straight out of Whole Foods bag - $5999.99
+                        </li>
+                        <li>
+                            <strong>Impossible Karen:</strong><br>
+                            Impossible meat made from fresh Cow Dung - $899.99
+                        </li>
+                    </ul>
+                </li>
+                <li>Lunch:
+                    <p>At Karen's, we believe that Lunch is for losers!</p>
+                </li>
+            </ul>
+
+            <strong>Contact:</strong>
+            <address>
+                <p>
+                    Address: 1234 Get Out Ln, NeverGoHere
+                    <br />
+                    Phone: (123)-cal-karn
+                    <br />
+                    Email: <a href="mailto:bad-karen@veganism.com">bad-karen@veganism.com</a>
+                </p>
+            </address>
+        </div>
+    </div>
+
+    <!-- Non-Vegetarian Section -->
+    <div id="non-vegetarian" class="meal-plan-section fade-in meal-plan-card">
+        <h3 style="text-align: center;">Non-Vegetarian</h3>
+        <div id="big-kahuna" class="joint">
+            <h3>Big Kahuna Burger</h3>
+            <strong>Hours of Operation:</strong>
+            <p>Monday-Sunday: 7:00 AM - 11:59 PM</p>
+
+            <strong>Menu and Price:</strong>
+            <ul>
+                <li>Breakfast:
+                    <ul>
+                        <li>
+                            <strong>Big Kahuna Burger - $11.99</strong><br />
+                            All American Burger served with American Cheese and Ket'chup
+                        </li>                        
+                        <li>
+                            <strong>Big A's Milkshake - $5.00</strong><br>
+                            All American Big A's Milkshake. Ice cream, a shot of bourbon, and milk topped with whipped
+                            cream, chocolate shavings, and a cherry.
+                        </li>
+                    </ul>
+                </li>
+                <li>Lunch & Dinner:
+                    <ul>
+                        <li>
+                            <strong>Squished Tomatoes - $14.99</strong><br />
+                            Burger with pre-squished burgers while screaming catch-up
+                        </li>
+                        <li>
+                            <strong>The Pulp Fiction - $18.99</strong><br>
+                            All American Burger for going all Medieval, best enjoyed with Red Apples.
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <strong>Contact:</strong>
+            <address>
+                <p>
+                    Address: Django Ln, Auf Wiedersehen
+                    <br />
+                    Phone: (123)-kil-bill
+                    <br />
+                    Email: <a href="mailto:kahuna@qt.com">kahuna@qt.com</a>
+                </p>
+            </address>
+        </div>
+    </div>
+
+    <!-- Other Dietary Options Section -->
+    <div id="other-dietary" class="meal-plan-section fade-in meal-plan-card">
+        <h3 style="text-align: center;">Other Dietary Options</h3>
+        <div id="halal-house" class="joint">
+            <h3>Hyderabad Halal House</h3>
+            <strong>Hours of Operation:</strong>
+            <p>Monday-Sunday: 12:00 PM - 7:00 PM</p>
+
+            <strong>Menu and Price:</strong>
+            <ul>
+                <li>Lunch & Dinner:
+                    <ul>
+                        <li>
+                            <strong>Balti Mutton - $11.99</strong><br />
+                            All Halaal Bucket of Mutton cooked overnight with Bay Leaf
+                        </li>
+                        <li>
+                            <strong>Hyderbadi Haleem - $12.99</strong><br />
+                            Fine chicken stew with Lentils
+                        </li>
+                        <li>
+                            <strong>Hyderabad Mandi Biryani - $29.99</strong><br>
+                            Half goat cooked overnight with spices and served with Biryani rice
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <strong>Contact:</strong>
+            <address>
+                <p>
+                    Address: 234 Biryani Dr
+                    <br />
+                    Phone: (123)-cal-bryn
+                    <br />
+                    Email: <a href="mailto:hyd-bryni@hyd.com">hyd-bryni@hyd.com</a>
+                </p>
+            </address>
+        </div>
+
+        <div id="kosher-bagels" class="joint">
+            <h3>Kosher Bagels</h3>
+            <strong>Hours of Operation:</strong>
+            <p>Monday-Sunday: 12:00 PM - 7:00 PM</p>
+
+            <strong>Menu and Price:</strong>
+            <ul>
+                <li>Breakfast:
+                    <ul>
+                        <li>
+                            <strong>Bagels with Shmear - $16.99</strong><br />
+                            Dozen Kosher Bagels with shmear
+                        </li>
+                        <li>
+                            <strong>Avacado Toast - $12.99</strong><br />
+                            Kosher Bagel with avacado
+                        </li>
+                        <li>
+                            <strong>Bagel Delight - $9.99</strong><br>
+                            Kosher bagel with eggs and OJ
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <strong>Contact:</strong>
+            <address>
+                <p>
+                    Address: 123 Einstein Ln
+                    <br />
+                    Phone: (eeq)-emc-sqrd
+                    <br />
+                    Email: <a href="mailto:bagels@kosher-bagels.com">bagels@kosher-bagels.com</a>
+                </p>
+            </address>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apartment Amenities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .filter-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .filter-dropdown {
+            font-size: 18px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .apartment {
+            display: none; /* Initially hide all apartments */
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .apartment-heading {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .usage-cost {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="filter-container">
+        <label for="amenity">Filter by Amenities:</label>
+        <select id="amenity" class="filter-dropdown" onchange="filterApartments()">
+            <option value="">Select an Amenity</option>
+            <option value="swimming-pool">Swimming Pool</option>
+            <option value="gym">Gym</option>
+            <option value="parking">Parking</option>
+        </select>
+    </div>
+
+    <!-- Apartments List -->
+    <div id="apartments-list">
+        <!-- Swimming Pool -->
+        <div class="apartment swimming-pool">
+            <h2 class="apartment-heading">'Bat'Hill Apartments</h2>
+            <div class="usage-cost swimming-pool-usage">
+                <p>Swimming Pool Usage Cost: $10/hr</p>
+            </div>
+        </div>
+        <div class="apartment swimming-pool">
+            <h2 class="apartment-heading">Spider Head Apartments</h2>
+            <div class="usage-cost swimming-pool-usage">
+                <p>Swimming Pool Usage Cost: $5/hr</p>
+            </div>
+        </div>
+
+        <!-- Gym -->
+        <div class="apartment gym">
+            <h2 class="apartment-heading">'Bat'Hill Apartments</h2>
+            <div class="usage-cost gym-usage">
+                <p>Gym Usage Cost: $20/hr</p>
+            </div>
+        </div>
+        <div class="apartment gym">
+            <h2 class="apartment-heading">The Overlook</h2>
+            <div class="usage-cost gym-usage">
+                <p>Gym Usage Cost: $10/hr</p>
+            </div>
+        </div>
+
+        <!-- Parking -->
+        <div class="apartment parking">
+            <h2 class="apartment-heading">'Bat'Hill Apartments</h2>
+            <div class="usage-cost parking-usage">
+                <p>Parking: Free 1 Parking</p>
+            </div>
+        </div>
+        <div class="apartment parking">
+            <h2 class="apartment-heading">Spider Head Apartments</h2>
+            <div class="usage-cost parking-usage">
+                <p>Parking: Free 1 Parking</p>
+            </div>
+        </div>
+        <div class="apartment parking">
+            <h2 class="apartment-heading">The Overlook</h2>
+            <div class="usage-cost parking-usage">
+                <p>Parking Usage Cost: $10/day</p>
+            </div>
+        </div>
+        <div class="apartment parking">
+            <h2 class="apartment-heading">The Bates</h2>
+            <div class="usage-cost parking-usage">
+                <p>Parking Usage Cost: $5/week</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterApartments() {
+            var amenity = document.getElementById("amenity").value;
+            var apartments = document.querySelectorAll(".apartment");
+            
+            apartments.forEach(function(apartment) {
+                apartment.style.display = "none"; // Hide all apartments
+            });
+            
+            if (amenity) {
+                var filteredApartments = document.querySelectorAll("." + amenity);
+                filteredApartments.forEach(function(apartment) {
+                    apartment.style.display = "block"; // Show selected amenity apartments
+                });
+            }
+        }
+    </script>
+</body>
+</html>

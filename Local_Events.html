@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Popular Events</title>
+    <style>
+        .event {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .event h2 {
+            font-size: 24px;
+        }
+        .event p {
+            font-size: 16px;
+        }
+        .event .timeline {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Local Popular Events</h1>
+
+    <label for="city">Select a city:</label>
+    <select id="city">
+        <option value="Fayetteville">Fayetteville</option>
+        <option value="Bentonville">Bentonville</option>
+        <option value="Springdale">Springdale</option>
+    </select>
+
+    <button id="searchButton">Search</button>
+
+    <div id="eventList"></div>
+
+    <script>
+        const eventsData = {
+            Fayetteville: [
+                {
+                    title: "Music in the Park",
+                    date: "June 15, 2023",
+                    description: "Join us for a night of live music in the beautiful Fayetteville Park. Local bands will be performing a variety of music styles.",
+                },
+                {
+                    title: "Fayetteville Farmers Market",
+                    date: "Every Saturday",
+                    description: "Experience the vibrant Fayetteville Farmers Market, featuring fresh produce and artisan crafts.",
+                },
+                {
+                    title: "Fayetteville Art Walk",
+                    date: "First Friday of Every Month",
+                    description: "Explore the diverse and talented art scene in Fayetteville during the monthly Art Walk.",
+                },
+                // Add more events for Fayetteville here
+            ],
+            Bentonville: [
+                {
+                    title: "Bentonville Street Festival",
+                    date: "July 20, 2023",
+                    description: "Join us for the Bentonville Street Festival, featuring live music, food vendors, and family-friendly activities.",
+                },
+                // Add more events for Bentonville here
+            ],
+            Springdale: [
+                {
+                    title: "Springdale Food Truck Festival",
+                    date: "August 5, 2023",
+                    description: "Sample a variety of delicious foods from local food trucks at the Springdale Food Truck Festival.",
+                },
+                // Add more events for Springdale here
+            ],
+        };
+
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const selectedCity = document.getElementById('city').value;
+            const eventList = document.getElementById('eventList');
+            eventList.innerHTML = ""; // Clear previous event listings
+
+            if (eventsData[selectedCity]) {
+                const topEvents = eventsData[selectedCity].slice(0, 3); // Display top 3 events
+                topEvents.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.classList.add('event');
+                    eventDiv.innerHTML = `
+                        <h2>${event.title}</h2>
+                        <p class="timeline">Date: ${event.date}</p>
+                        <p>${event.description}</p>
+                    `;
+                    eventList.appendChild(eventDiv);
+                });
+            } else {
+                eventList.textContent = "No events found for the selected city.";
+            }
+        });
+    </script>
+</body>
+</html>

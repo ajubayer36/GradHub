@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Outdoor Activities</title>
+    <style>
+        body {
+            background-color: #1E1E1E; /* IntelliJ IDEA Dark Background Color */
+            color: #D4D4D4; /* IntelliJ IDEA Dark Text Color */
+            font-family: Arial, sans-serif;
+        }
+
+        .activity-links {
+            display: flex;
+            justify-content: center;
+            background-color: #3E3E3E; /* IntelliJ IDEA Dark Component Background Color */
+            padding: 10px;
+        }
+
+        .activity-link {
+            margin: 10px;
+            padding: 10px;
+            background-color: #3E3E3E; /* IntelliJ IDEA Dark Component Background Color */
+            color: #D4D4D4; /* IntelliJ IDEA Dark Text Color */
+            text-decoration: none;
+            border: 1px solid #D4D4D4; /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+        }
+
+        .activity-link:hover {
+            background-color: #606060; /* IntelliJ IDEA Dark Component Background Hover Color */
+        }
+
+        .activity-section {
+            display: none;
+            background-color: #3E3E3E; /* IntelliJ IDEA Dark Component Background Color */
+            color: #D4D4D4; /* IntelliJ IDEA Dark Text Color */
+            border: 1px solid #D4D4D4; /* IntelliJ IDEA Dark Text Color */
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .links {
+            background-color: #D4D4D4; /* IntelliJ IDEA Dark Component Background Color */
+            color: #3E3E3E; /* IntelliJ IDEA Dark Text Color */
+        }
+
+        .fade-in {
+            animation: fade-in 1s forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .place {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .place img {
+            /* max-width: 100%; */
+            /* height: auto; */
+            width: 500px;
+        }
+
+        .place-heading {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .place-hours {
+            font-weight: bold;
+        }
+
+        .place-cost {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function showActivity(activityId) {
+            var allSections = document.getElementsByClassName('activity-section');
+            for (var i = 0; i < allSections.length; i++) {
+                allSections[i].style.display = "none";
+                allSections[i].classList.remove("fade-in");
+            }
+            var section = document.getElementById(activityId);
+            section.style.display = "block";
+            section.classList.add("fade-in");
+        }
+    </script>
+</head>
+<body>
+<h1 style="text-align: center;">Outdoor Activities</h1>
+<div class="activity-links">
+    <a href="javascript:void(0);" onclick="showActivity('hiking')" class="activity-link">Hiking</a>
+    <a href="javascript:void(0);" onclick="showActivity('cycling')" class="activity-link">Cycling</a>
+    <a href="javascript:void(0);" onclick="showActivity('kayaking')" class="activity-link">Kayaking</a>
+</div>
+<!-- Hiking Section -->
+<div id="hiking" class="activity-section fade-in">
+    <h2>Hiking</h2>
+    <p>Hiking is a great outdoor activity that allows you to explore natural trails and enjoy the beauty of nature. Whether you prefer short nature walks or challenging mountain hikes, there's a hiking adventure for everyone.</p>
+    <div class="place">
+        <h2 class="place-heading">Markham Hill Nature Trails</h2>
+        <img src="markham.png" alt="Markham Hill Nature Trails">
+        <div class="place-hours">
+            <h3>Hours of Operation</h3>
+            <p>Monday-Sunday: 24/7</p>
+        </div>
+        <div class="place-cost">
+            <h3>Cost</h3>
+            <p>Free</p>
+        </div>
+    </div>
+
+    <div class="place">
+        <h2 class="place-heading">Finger Park Trail</h2>
+        <img src="finger-park.png" alt="Finger Park Trail">
+        <div class="place-hours">
+            <h3>Hours of Operation</h3>
+            <p>Monday-Sunday: 8:00 AM - 6:00 PM</p>
+        </div>
+        <div class="place-cost">
+            <h3>Cost</h3>
+            <p>Free</p>
+        </div>
+    </div>
+
+    <div class="place">
+        <h2 class="place-heading">Lake Sequoyah Trailhead</h2>
+        <img src="sequoyah.png" alt="Lake Sequoyah Trailhead">
+        <div class="place-hours">
+            <h3>Hours of Operation</h3>
+            <p>Monday-Sunday: 6:00 AM - 6:00 PM</p>
+        </div>
+        <div class="place-cost">
+            <h3>Cost</h3>
+            <p>Free</p>
+        </div>
+    </div>
+</div>
+<!-- Cycling Section -->
+<div id="cycling" class="activity-section">
+    <h2>Cycling</h2>
+    <p>Cycling is a fun and eco-friendly outdoor activity. You can explore your city on a bike, go for long road trips, or tackle challenging mountain bike trails in the countryside.</p>
+    <ul>
+        <li class="links">
+            <a href="https://www.alltrails.com/us/arkansas/bentonville/road-biking">Bentonville</a>
+            <br/>
+            <strong>Cost:</strong>
+            <p>Free</p>
+            <br/>
+
+            <strong>Hours:</strong>
+            <p>24/7</p>
+        </li>
+        <li class="links"><a href="https://www.alltrails.com/us/arkansas/fayetteville">Fayetteville</a>
+            <br/>
+            <strong>Cost:</strong>
+            <p>Free</p>
+            <br/>
+
+            <strong>Hours:</strong>
+            <p>24/7</p>
+        </li>
+    </ul>
+</div>
+<!-- Kayaking Section -->
+<div id="kayaking" class="activity-section">
+    <h2>Kayaking</h2>
+    <p>Kayaking allows you to paddle through calm lakes, rivers, and even rough waters. It's a fantastic way to connect with the water and experience the tranquility of aquatic environments.</p>
+    <div class="place">
+        <h2 class="place-heading">Lake Fayetteville Park</h2>
+        <img src="lake-fayetteville-park.png" alt="Lake Fayetteville Park">
+        <div class="place-hours">
+            <h3>Hours of Operation</h3>
+            <p>Monday-Sunday: 7:30AM - 6:30PM</p>
+        </div>
+        <div class="place-cost">
+            <h3>Cost</h3>
+            <strong>1Hr</strong> - $20
+            <br/>
+            <strong>2Hr</strong> - $35
+            <br/>
+            <strong>4Hr</strong> - $60
+            <br/>
+            <strong>8Hr(All Day)</strong> - $100
+        </div>
+    </div>
+
+    <div class="place">
+        <h2 class="place-heading">Beaver Lake</h2>
+        <img src="beaver-lake.png" alt="Lake Fayetteville Park">
+        <div class="place-hours">
+            <h3>Hours of Operation</h3>
+            <p>Monday-Sunday: 9:000AM - 5:00PM</p>
+        </div>
+        <div class="place-cost">
+            <h3>Cost</h3>
+            <strong>1Hr</strong> - $20
+            <br/>
+            <strong>2Hr</strong> - $35
+            <br/>
+            <strong>4Hr</strong> - $60
+            <br/>
+            <strong>8Hr(All Day)</strong> - $100
+        </div>
+    </div>
+</div>
+</body>
+</html>

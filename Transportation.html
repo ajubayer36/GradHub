@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transportation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        .postcard-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .postcard {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+            margin-bottom: 20px; /* Add margin to create space between cards */
+            display: flex;
+            flex-direction: column;
+        }
+        .postcard img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .postcard-info {
+            padding: 10px;
+            flex: 1; /* Allow description to expand to fill remaining space */
+        }
+        .spot-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 10px; /* Add margin to separate name and description */
+        }
+        .description {
+            margin-top: 10px;
+        }
+		.apply-button {
+            display: inline-block;
+            padding: 5px 10px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .see-location {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Transportation</h1>
+    </div>
+    <div class="postcard-container">
+        <div class="postcard">
+            <img src="trans1.jpg" alt="Transport 1">
+            <div class="postcard-info">
+                <div class="spot-name">Private Vehicle</div>
+                <div class="description">
+                    Most international students in Fayetteville, Arkansas, often choose to purchase private cars upon their arrival. They typically acquire their vehicles through platforms like Facebook Marketplace, where they can find cars at more affordable prices. Additionally, some students opt to buy cars from dealers in order to minimize the risk of encountering fraudulent transactions.  
+                </div>
+            </div>
+        </div>
+        <div class="postcard">
+            <img src="trans2.jpg" alt="Transport 2">
+            <div class="postcard-info">
+                <div class="spot-name">Bus</div>
+                <div class="description">
+                    UARK provides a bus facility for its students with buses serving various routes around the campus. Typically, a bus arrives every 30 minutes. Students have the option to track the buses using the "Passio GO" app or the passio go's website, ensuring they can reach the bus stop in a timely manner.
+                </div>
+            </div>
+            <div class="see-location">
+                <a href="https://uark.passiogo.com/" class="apply-button">Passio GO</a>
+            </div>
+        </div>
+        <div class="postcard">
+            <img src="trans3.jpg" alt="Transport 3">
+            <div class="postcard-info">
+                <div class="spot-name">Cycle and Bike</div>
+                <div class="description">
+                    A significant number of students choose to use bicycles, motorcycles, or e-bikes as their means of commuting. Those interested can apply for a free bicycle via the "Pedal it Forward" website.
+                </div>
+            </div>
+            <div class="see-location">
+                <a href="https://www.pedalitforward.org/" class="apply-button">Pedal it Forward</a>
+            </div>
+        </div>
+        <div class="postcard">
+            <img src="trans4.jpg" alt="Transport 4">
+            <div class="postcard-info">
+                <div class="spot-name">Walking</div>
+                <div class="description">
+                    Students living in close proximity to the university frequently choose to walk as their mode of transportation. Many of these students reside within a 10 to 20-minute walking distance from the campus, and the picturesque views in the area enhance the liveliness of their stroll to the university. 
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

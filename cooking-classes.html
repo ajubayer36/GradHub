@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Cooking Classes</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+<h1>Local Cooking Classes</h1>
+
+<div id="class-list"></div>
+
+<script>
+    // Example data (replace this with data from your server)
+    const classesData = [
+        {
+            name: "Italian Cooking Class",
+            schedule: "Every Saturday, 2:00 PM - 4:00 PM",
+            price: "$50",
+            registrationDetails: "its-a-me-mario.com",
+            location: {
+                lat: 41.303921,
+                lng: -81.901693
+            }
+        },
+        {
+            name: "Sushi Rolling class",
+            schedule: "Every Saturday, 1:00 PM - 3:00 PM",
+            price: "$80",
+            registrationDetails: "sushi-katana.com",
+            location: {
+                lat: 51.848637,
+                lng: -0.55462
+            }
+        },
+        {
+            name: "Aunt Karen's Vegan classes",
+            schedule: "Every Saturday, 1:00 PM - 1:05 PM",
+            price: "$80",
+            registrationDetails: "water-is-vegan.com",
+            location: {
+                lat: 33.747252,
+                lng: -112.633853
+            }
+        },
+        {
+            name: "Los Pollos Hermanos",
+            schedule: "Every Sunday, 4:00 PM - 7:00 PM",
+            price: "$80",
+            registrationDetails: "gus-wins.com",
+            location: {
+                lat: 43.645074,
+                lng: -115.993081
+            }
+        },
+        // Add more classes as needed
+    ];
+
+    // Function to display classes on the webpage
+    function displayClasses() {
+        const classList = document.getElementById('class-list');
+
+        classesData.forEach((cls) => {
+            const classElement = document.createElement('div');
+            classElement.innerHTML = `
+                    <h2>${cls.name}</h2>
+                    <p><strong>Schedule:</strong> ${cls.schedule}</p>
+                    <p><strong>Price:</strong> ${cls.price}</p>
+                    <p><strong>Registration:</strong> Register at <a href="${cls.registrationDetails}">${cls.registrationDetails}</a></p>
+                    <a href="https://www.google.com/maps?q=${cls.location.lat},${cls.location.lng}"
+                        target="_blank">View on Google Maps</a>
+                    <hr>
+                `;
+            classList.appendChild(classElement);
+        });
+    }
+
+    // Call the function to display classes when the page loads
+    window.onload = displayClasses;
+</script>
+</body>
+</html>

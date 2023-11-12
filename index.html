@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GradHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            /*display: flex;*/
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         header {
             background-image: url('logo1.jpg');
@@ -44,6 +51,79 @@
             margin: 0 10px 20px 10px; /* Add margin for spacing between sections */
             vertical-align: top;
         }
+        .gold {
+            color: gold;
+        }
+        .card {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .feature-rating {
+            padding-bottom: 1em;
+        }
+        div.ratings-parent {
+            background: white;
+            border: 1px dot-dash black;
+        }
+
+        .form-container {
+            width: 60%;
+            margin: auto;
+            background: #ac8b27;
+            border: 1px dot-dash black;
+        }
+
+        .collapsible {
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+        }
+
+        .content {
+            display: none;
+            overflow: hidden;
+        }
+
+        .feature-container {
+            margin-top: 20px;
+        }
+
+        .comments {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            display: none;
+        }
+        .star-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .un-star {
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -75,5 +155,175 @@
             <p>Discover recreational activities and leisure options at GradHub.</p>
         </section>
     </div>
+
+    <div class="card ratings-parent">
+        <h3>Ratings</h3>
+        <div id="rating-container"></div>
+    </div>
+
+    <div class="form-container card ratings-content">
+        <button class="collapsible" onclick="scrollToContent()">Rate your experience</button>
+        <div class="content">
+            <div class="feature-container" id="foodCulture">
+                <h3>Food and Culture</h3>
+                <div class="star-container" data-feature="Food and Culture">
+                    <span class="star un-star" onclick="rateFeature(this, 'Food and Culture', 1)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Food and Culture', 2)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Food and Culture', 3)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Food and Culture', 4)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Food and Culture', 5)">&#9733;</span>
+                </div>
+                <textarea rows="8" class="comments" placeholder="Comments for Food and Culture"></textarea>
+            </div>
+            <div class="feature-container" id="legalDocuments">
+                <h3>Legal Documents</h3>
+                <div class="star-container" data-feature="Legal Documents">
+                    <span class="star un-star" onclick="rateFeature(this, 'Legal Documents', 1)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Legal Documents', 2)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Legal Documents', 3)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Legal Documents', 4)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Legal Documents', 5)">&#9733;</span>
+                </div>
+                <textarea rows="8" class="comments" placeholder="Comments for Legal Documents"></textarea>
+            </div>
+            <div class="feature-container" id="housing">
+                <h3>Housing</h3>
+                <div class="star-container" data-feature="Housing">
+                    <span class="star un-star" onclick="rateFeature(this, 'Housing', 1)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Housing', 2)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Housing', 3)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Housing', 4)">&#9733;</span>
+                    <span class="star un-star" onclick="rateFeature(this, 'Housing', 5)">&#9733;</span>
+                </div>
+                <textarea rows="8" class="comments" placeholder="Comments for Housing"></textarea>
+
+                <div class="feature-container" id="financeBudget">
+                    <h3>Finance and Budget</h3>
+                    <div class="star-container" data-feature="Finance and Budget">
+                        <span class="star un-star" onclick="rateFeature(this, 'Finance and Budget', 1)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Finance and Budget', 2)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Finance and Budget', 3)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Finance and Budget', 4)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Finance and Budget', 5)">&#9733;</span>
+                    </div>
+                    <textarea rows="8" class="comments" placeholder="Comments for Finance and Budget"></textarea>
+                </div>
+                <div class="feature-container" id="recreation">
+                    <h3>Recreation</h3>
+                    <div class="star-container" data-feature="Recreation">
+                        <span class="star un-star" onclick="rateFeature(this, 'Recreation', 1)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Recreation', 2)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Recreation', 3)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Recreation', 4)">&#9733;</span>
+                        <span class="star un-star" onclick="rateFeature(this, 'Recreation', 5)">&#9733;</span>
+                    </div>
+                    <textarea rows="8" class="comments" placeholder="Comments for Recreation"></textarea>
+                </div>
+
+            <!-- Repeat the above code for other features -->
+
+            <button class="submit-btn" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+    <div class="message" id="thanksMessage">Thanks for rating your experience.</div>
+
+    <script>
+        function generateStars(ratingObj) {
+            const feature = ratingObj.name;
+            const rating = ratingObj.rating;
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 !== 0;
+
+            let starsHTML = '';
+
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '<i class="fas fa-star gold"></i>';
+            }
+
+            if (halfStar) {
+                starsHTML += '<i class="fas fa-star-half-alt gold"></i>';
+            }
+
+            const remainingStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+            for (let i = 0; i < remainingStars; i++) {
+                starsHTML += '<i class="far fa-star gold"></i>';
+            }
+
+            starsHTML = "<div class='stars'>" + starsHTML + "</div>";
+            starsHTML += "<div class='feature'>(" + feature + ")</div>";
+
+            return starsHTML;
+        }
+
+        const ratingContainer = document.getElementById('rating-container');
+
+        // Example ratings
+        const ratings = [
+            {
+                "name": "Food and Culture",
+                "rating": generateRandomRating()
+            },
+            {
+                "name": "Legal Documents",
+                "rating": generateRandomRating()
+            },
+            {
+                "name": "Housing",
+                "rating": generateRandomRating()
+            },
+            {
+                "name": "Finance and Budget",
+                "rating": generateRandomRating()
+            },
+            {
+                "name": "Recreation",
+                "rating": generateRandomRating()
+            }
+        ];
+
+        ratings.forEach(rating => {
+            const starsHTML = generateStars(rating);
+            const ratingDiv = document.createElement('div');
+            ratingDiv.setAttribute("class", "feature-rating");
+            ratingDiv.innerHTML = starsHTML;
+            ratingContainer.appendChild(ratingDiv);
+        });
+
+        function generateRandomRating() {
+            return Math.random() * 5;
+        }
+
+        function rateFeature(star, feature, rating) {
+            const stars = star.parentElement.getElementsByClassName('star');
+            for (let i = 0; i < rating; i++) {
+                stars[i].classList.add('gold');
+                stars[i].classList.remove('un-star');
+            }
+            for (let i = rating; i < stars.length; i++) {
+                stars[i].classList.remove('gold');
+                stars[i].classList.add('un-star');
+            }
+        }
+
+        function submitForm() {
+            const content = document.querySelector('.content');
+            const message = document.getElementById('thanksMessage');
+            content.style.display = 'none';
+            message.style.display = 'block';
+        }
+
+        document.querySelector('.collapsible').addEventListener('click', function() {
+            const content = document.querySelector('.content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+
+        function scrollToContent() {
+            const content = document.querySelector('.ratings-content');
+            content.style.display = 'block';
+            const yOffset = content.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: yOffset, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>

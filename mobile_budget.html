@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        #totalExpense {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Expense Tracker</h1>
+
+    <ul id="expenseList">
+        <li><label for="meals">Meals:</label> <input type="number" id="meals" class="expense-input" data-category="Meals" onchange="calculateTotal()"></li>
+        <li><label for="groceries">Groceries:</label> <input type="number" id="groceries" class="expense-input" data-category="Groceries" onchange="calculateTotal()"></li>
+        <li><label for="clothes">Clothes:</label> <input type="number" id="clothes" class="expense-input" data-category="Clothes" onchange="calculateTotal()"></li>
+        <li><label for="sports">Sports:</label> <input type="number" id="sports" class="expense-input" data-category="Sports" onchange="calculateTotal()"></li>
+        <li><label for="fuel">Fuel/Gas:</label> <input type="number" id="fuel" class="expense-input" data-category="Fuel/Gas" onchange="calculateTotal()"></li>
+        <li><label for="car">Car:</label> <input type="number" id="car" class="expense-input" data-category="Car" onchange="calculateTotal()"></li>
+        <li><label for="house">House:</label> <input type="number" id="house" class="expense-input" data-category="House" onchange="calculateTotal()"></li>
+        <li><label for="relaxation">Relaxation:</label> <input type="number" id="relaxation" class="expense-input" data-category="Relaxation" onchange="calculateTotal()"></li>
+        <li><label for="internet">Internet:</label> <input type="number" id="internet" class="expense-input" data-category="Internet" onchange="calculateTotal()"></li>
+        <li><label for="education">Education:</label> <input type="number" id="education" class="expense-input" data-category="Education" onchange="calculateTotal()"></li>
+    </ul>
+
+    <p id="totalExpense">Total Expense: $0</p>
+
+    <label for="datePicker">Select Date to View Historical Spending:</label>
+    <input type="date" id="datePicker" onchange="filterExpensesByDate()">
+
+    <ul id="historicalExpenseList"></ul>
+
+    <button onclick="addExpense()">Add Expense</button>
+
+    <br>
+    <br>
+
+    <label for="password">Enter Password:</label>
+    <input type="password" id="password" placeholder="Enter your password">
+
+    <button onclick="authenticate()">Authenticate</button>
+
+    <br>
+    <br>
+
+    <label for="softwareUpdate">Software Update:</label>
+    <input type="checkbox" id="softwareUpdate" onchange="notifySoftwareUpdate()"> Notify me of new software updates
+
+    <button onclick="exportToCSV()">Export to CSV</button>
+
+    <script>
+        var expenses = [];
+        var expensesByDate = {};
+
+        function calculateTotal() {
+            var expenseInputs = document.getElementsByClassName("expense-input");
+            var totalExpense = 0;
+
+            for (var i = 0; i < expenseInputs.length; i++) {
+                totalExpense += parseFloat(expenseInputs[i].value) || 0;
+            }
+
+            document.getElementById("totalExpense").textContent = "Total Expense: $" + totalExpense.toFixed(2);
+        }
+
+        function addExpense() {
+            var expenseInputs = document.getElementsByClassName("expense-input");
+            var date = new Date().toISOString().slice(0, 10);
+
+            if (!expensesByDate[date]) {
+                expensesByDate[date] = [];
+            }
+
+            for (var i = 0; i < expenseInputs.length; i++) {
+                var category = expenseInputs[i].getAttribute("data-category");
+                var amount = parseFloat(expenseInputs[i].value) || 0;
+
+                expensesByDate[date].push({ category, amount });
+            }
+
+            calculateTotal();
+        }
+
+        function filterExpensesByDate() {
+            var selectedDate = document.getElementById("datePicker").value;
+            var filteredExpenses = expensesByDate[selectedDate] || [];
+
+            displayFilteredExpenses(filteredExpenses);
+        }
+
+        function displayFilteredExpenses(filteredExpenses) {
+            var historicalExpenseList = document.getElementById("historicalExpenseList");
+            historicalExpenseList.innerHTML = ""; // Clear the existing list
+
+            for (var i = 0; i < filteredExpenses.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = filteredExpenses[i].category + ": $" + filteredExpenses[i].amount.toFixed(2);
+                historicalExpenseList.appendChild(li);
+            }
+        }
+
+        function authenticate() {
+            var password = document.getElementById("password").value;
+
+            // For simplicity, let's consider a hardcoded password
+            var correctPassword = "your_password_here";
+
+            if (password === correctPassword) {
+                alert("Authentication successful!");
+            } else {
+                alert("Authentication failed. Please try again.");
+            }
+        }
+
+        function notifySoftwareUpdate() {
+            var softwareUpdateCheckbox = document.getElementById("softwareUpdate");
+
+            if (softwareUpdateCheckbox.checked) {
+                alert("New software update available!");
+            }
+        }
+
+        function exportToCSV() {
+            var csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Category,Amount\n";
+
+            expenses.forEach(function (expense) {
+                csvContent += expense.category + "," + expense.amount + "\n";
+            });
+
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "expenses.csv");
+            document.body.appendChild(link); // Required for FF
+
+            link.click(); // This will download the data file named "expenses.csv".
+        }
+    </script>
+
+</body>
+</html>

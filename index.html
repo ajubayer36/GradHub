@@ -69,6 +69,23 @@
             border: 1px dot-dash black;
         }
 
+        div.site-visits {
+            background: white;
+            border: 1px dot-dash black;
+        }
+        #site-visits-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #site-visits-pie-chart {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+        }
+
         .form-container {
             width: 60%;
             margin: auto;
@@ -156,6 +173,14 @@
         </section>
     </div>
 
+    <div class="card site-visits">
+        <h3>Site visit statistics</h3>
+        <div id="site-visits-container">
+            <canvas id="site-visits-pie-chart" style="width:100%;max-width:600px"></canvas>
+            <h4>Download this data in <a id="siteStatisticsDownload" href="#">excel</a> format</h4>
+        </div>
+    </div>
+
     <div class="card ratings-parent">
         <h3>Ratings</h3>
         <div id="rating-container"></div>
@@ -223,6 +248,7 @@
             <!-- Repeat the above code for other features -->
 
             <button class="submit-btn" onclick="submitForm()">Submit</button>
+        </div>
         </div>
     </div>
     <div class="message" id="thanksMessage">Thanks for rating your experience.</div>
@@ -324,6 +350,83 @@
             const yOffset = content.getBoundingClientRect().top + window.scrollY;
             window.scrollTo({ top: yOffset, behavior: 'smooth' });
         }
+    </script>
+    <script src="Chart.js"></script>
+    <script>
+        const xValues = [
+            "Wakanda",
+            "Italy",
+            "India",
+            "Spain",
+            "USA",
+            "Argentina",
+            "Hogwarts",
+            "Midgard",
+            "Atlantis",
+            "Zootopia"
+        ];
+        const yValues = [];
+        xValues.forEach(() => {
+            yValues.push(Math.floor(Math.random() * 1000) + 1);
+        });
+        const barColors = [
+            "#1a1919",
+            "#b91d47",
+            "#00aba9",
+            "#2b5797",
+            "#e8c3b9",
+            "#1e7145",
+            "#fcba03",
+            "#755d5d",
+            "#d9d9d9",
+            "#fc03fc"
+        ];
+
+        new Chart("site-visits-pie-chart", {
+            type: "pie",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Site visits across countries"
+                }
+            }
+        });
+
+        const fileName = "site_visits.csv";
+
+        function downloadCSV() {
+            // Combine xValues and yValues into a CSV string
+            const csvContent =
+                // "data:text/csv;charset=utf-8," +
+                xValues.join(",") +
+                "\n" +
+                yValues.join(",");
+
+            // Create a blob and a link to trigger the download
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+
+            // Append the link to the document and trigger the click event
+            document.body.appendChild(link);
+            link.click();
+
+            // Clean up
+            document.body.removeChild(link);
+        }
+        document.getElementById("siteStatisticsDownload").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            // Trigger the download
+            downloadCSV(xValues, yValues, fileName);
+        });
     </script>
 </body>
 </html>

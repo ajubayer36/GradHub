@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Earn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #header {
+      background-color: #f1f1f1;
+      padding: 10px;
+      text-align: center;
+    }
+
+    #content {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px;
+    }
+
+    #calculator, #earnings {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    #bonus-notification {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      display: none;
+    }
+
+    #crypto-list {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    #crypto-list h2 {
+      text-align: center;
+    }
+
+    #crypto-list ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+    }
+
+    #crypto-list li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="header">
+  <h1>Crypto Currency Earning</h1>
+</div>
+
+<div id="content">
+  <div id="calculator" style="margin-right: 200px;">
+    <h2>Time Spent Calculator</h2>
+    <p>Your time on the website: <span id="time-spent">0</span> minutes</p>
+  </div>
+
+  <div id="earnings">
+    <h2>Earnings</h2>
+    <p>You have earned: <span id="total-earnings">0</span> Coins</p>
+  </div>
+
+  <div id="crypto-list">
+    <h2>Supported Cryptocurrencies</h2>
+    <ul>
+      <li>1. Grad Dollar</li>
+      <li>2. Doge Coin</li>
+      <li>3. Binance</li>
+      <li>4. Monero</li>
+      <li>5. Fusion</li>
+    </ul>
+  </div>
+</div>
+
+<div id="header">
+  <h1>Bonus Opportunity (Referral)</h1>
+  <p>Referral Link: <span id="referral-link">https://gradhub.com?ref=USER_ID</span></p>
+  <p>Referrals: <span id="referral-count">0</span></p>
+</div>
+
+<div id="email-notification">
+  <h2>Email Notification</h2>
+  <p>Receive notifications of your total calculated coins through email:</p>
+  <form id="email-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="button" onclick="subscribeToEmail()">Subscribe</button>
+  </form>
+</div>
+
+<div id="bonus-notification">
+  <p>Bonus Opportunity! Earn extra Coins now!</p>
+</div>
+
+<script>
+  let totalTimeSpent = 0;
+  let totalEarnings = 0;
+  let referralCount = 0;
+
+  // Function to update time spent and earnings
+  function updateStats() {
+    totalTimeSpent++;
+    totalEarnings += (totalTimeSpent % 30 === 0) ? 0.01 : 0;
+
+    // Check if the user visited through a referral link
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrer = urlParams.get('ref');
+    if (referrer) {
+      totalEarnings += 0.5;
+      referralCount++;
+      document.getElementById('referral-count').innerText = referralCount;
+    }
+
+    document.getElementById('time-spent').innerText = totalTimeSpent;
+    document.getElementById('total-earnings').innerText = totalEarnings.toFixed(2);
+  }
+
+  // Function to check for bonus opportunity
+  function checkBonusOpportunity() {
+    if (totalTimeSpent % 50 === 0) {
+      document.getElementById('bonus-notification').style.display = 'block';
+    } else {
+      document.getElementById('bonus-notification').style.display = 'none';
+    }
+  }
+
+  // Update stats every second
+  setInterval(() => {
+    updateStats();
+    checkBonusOpportunity();
+  }, 1000);
+
+  // Function to subscribe to email notifications
+  function subscribeToEmail() {
+    const email = document.getElementById('email').value;
+
+    // You can add logic here to send the email, such as using an API or a server-side script
+    // For demonstration purposes, let's just display an alert
+    alert(`You will receive notifications at ${email} for your total calculated coins.`);
+  }
+</script>
+
+</body>
+</html>

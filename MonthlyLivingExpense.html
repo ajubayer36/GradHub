@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Control</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #FF6B6B, #6B6BFF);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 36px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total {
+            font-weight: bold;
+        }
+        .report-options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .report-options label {
+            margin-right: 10px;
+        }
+        .report-options input[type="date"],
+        .report-options button {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        .report-options button {
+            background-color: #FF6B6B;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .report-options button:hover {
+            background-color: #6B6BFF;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Monthly Living Expense</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Expense Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="expenseTableBody">
+                <tr>
+                    <td>Tuition Fees</td>
+                    <td><input type="number" class="amount" value="1500.00"></td>
+                </tr>
+                <tr>
+                    <td>Books and Supplies</td>
+                    <td><input type="number" class="amount" value="200.00"></td>
+                </tr>
+                <!-- Add other expenses here -->
+                <tr>
+                    <td>Rent</td>
+                    <td><input type="number" class="amount" value="800.00"></td>
+                </tr>
+                <tr>
+                    <td>Utilities (Electricity, Water, Internet)</td>
+                    <td><input type="number" class="amount" value="120.00"></td>
+                </tr>
+                <tr>
+                    <td>Transportation (Public transport or Gas)</td>
+                    <td><input type="number" class="amount" value="100.00"></td>
+                </tr>
+                <tr>
+                    <td>Health Insurance</td>
+                    <td><input type="number" class="amount" value="300.00"></td>
+                </tr>
+                <tr>
+                    <td>Food and Groceries</td>
+                    <td><input type="number" class="amount" value="250.00"></td>
+                </tr>
+                <tr>
+                    <td>Health Care/Medical Expenses</td>
+                    <td><input type="number" class="amount" value="50.00"></td>
+                </tr>
+                <tr>
+                    <td>Personal/Leisure Expenses</td>
+                    <td><input type="number" class="amount" value="100.00"></td>
+                </tr>
+                <tr>
+                    <td>Technology/Equipment</td>
+                    <td><input type="number" class="amount" value="150.00"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td id="totalExpense" class="total"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="report-options">
+            <label for="fromDate">From:</label>
+            <input type="date" id="fromDate" name="fromDate">
+
+            <label for="toDate">To:</label>
+            <input type="date" id="toDate" name="toDate">
+            <button onclick="viewReport()">View Report</button>
+            <button onclick="mailReport()">Mail Report</button>
+        </div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            const amountInputs = document.querySelectorAll('.amount');
+            let total = 0;
+            amountInputs.forEach(input => {
+                total += parseFloat(input.value || 0);
+            });
+            document.getElementById('totalExpense').textContent = total.toFixed(2);
+        }
+
+        function viewReport() {
+            const fromDate = document.getElementById('fromDate').value;
+            const toDate = document.getElementById('toDate').value;
+            console.log(`View report from ${fromDate} to ${toDate}`);
+        }
+
+        function mailReport() {
+            console.log('Report mailed successfully');
+        }
+
+        const amountFields = document.querySelectorAll('.amount');
+        amountFields.forEach(field => {
+            field.addEventListener('input', calculateTotal);
+        });
+
+        calculateTotal();
+    </script>
+</body>
+</html>

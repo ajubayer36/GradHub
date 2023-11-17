@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grady - International Student Chatbot</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    #chat-container {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      max-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #3498db;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: #fff;
+    }
+
+    #chat-box {
+      height: 200px;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+
+    #user-input {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+      background-color: #2980b9;
+      border-top: 1px solid #fff;
+    }
+
+    #user-message {
+      flex: 1;
+      margin-right: 5px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    #send-btn {
+      cursor: pointer;
+      background-color: #2ecc71;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="chat-container">
+    <div id="chat-box"></div>
+    <div id="user-input">
+      <input type="text" id="user-message" placeholder="Type your message...">
+      <button id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var userMessage = document.getElementById('user-message').value;
+      if (userMessage.trim() === '') return;
+
+      var chatBox = document.getElementById('chat-box');
+      var userDiv = document.createElement('div');
+      userDiv.className = 'user-message';
+      userDiv.textContent = 'You: ' + userMessage;
+      chatBox.appendChild(userDiv);
+
+      // Process user's query and generate bot response
+      var botResponse = generateBotResponse(userMessage);
+      
+      var botDiv = document.createElement('div');
+      botDiv.className = 'bot-message';
+      botDiv.textContent = 'Grady: ' + botResponse;
+      chatBox.appendChild(botDiv);
+
+      // Clear the input field
+      document.getElementById('user-message').value = '';
+
+      // Scroll to the bottom of the chat box
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function generateBotResponse(userMessage) {
+      // Simple logic to generate bot responses based on user's queries
+      userMessage = userMessage.toLowerCase();
+
+      if (userMessage.includes('food') || userMessage.includes('culture')) {
+        return 'Bars and Nightlife: Explore local bars and nightlife scenes. Local Cuisine: Try a variety of local dishes. Local Cooking Classes: Some communities offer cooking classes. Local Events: Check out cultural events in the area. Meal Plans: Universities often provide meal plans. Religious Gatherings: Look for religious gatherings or events in your community.';
+      } else if (userMessage.includes('legal') || userMessage.includes('documents')) {
+        return 'Transcripts: Obtain transcripts from your previous institution. Social Security Number: Apply for a Social Security Number if required. Tax: Understand tax regulations for international students. State ID: Obtain a state ID for identification purposes. Driving License: Check the requirements for obtaining a driving license. Insurance: Consider health and other types of insurance.';
+      } else if (userMessage.includes('housing')) {
+        return 'Finding Accommodation: Start looking for accommodation early. Finding Roommates: Consider finding roommates to share expenses. Transportation: Explore transportation options around your area. Furniture: Check if your accommodation comes furnished. Amenities of Apartment: Inquire about apartment amenities. Safety and Security: Prioritize safety and security when choosing housing. University Housing: Explore on-campus housing options.';
+      } else if (userMessage.includes('finance') || userMessage.includes('budget')) {
+        return 'Credit Card Options: Research credit card options for international students. Student Discount Options: Look for student discounts on various services. Scholarships & Grants: Explore available scholarships and grants. Insurance for International Students: Consider health and other types of insurance. Monthly Living Expenses: Plan for monthly living expenses. Utility Expenses: Include utility expenses in your budget. Income Tax Considerations: Be aware of income tax regulations for international students. Opening a Bank Account: Consider opening a bank account in the local area.';
+      } else if (userMessage.includes('recreation')) {
+        return 'Outdoor Places: Discover nearby outdoor destinations. Movie Theatres and Shows: Check out local movie theaters and shows. Outdoor Activities: Engage in outdoor activities such as hiking or sports. Indoor Places: Explore indoor recreational places in your area. Concerts: Attend concerts featuring various artists. Carnivals and Fairs: Enjoy carnivals and fairs in the community. Festivals: Participate in local festivals. How to get there: Plan your transportation to recreational spots.';
+      } else if (userMessage.includes('university')) {
+        return 'One of the best Universities in the USA is University of Arkansas.';
+	  } else if (userMessage.includes('business school')) {
+        return 'USA has many good business schools but one of the renowned is Walton College of Business.';
+	  } else {
+        return 'I\'m here to help with information about studying in the USA! Feel free to ask about Food and Culture, Legal Documents, Housing, Finance and Budget, or Recreation.';
+      }
+    }
+  </script>
+
+</body>
+</html>
